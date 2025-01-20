@@ -1,0 +1,15 @@
+{
+  "appTitle": "ຕິດຕາມການເງິນສ່ວນຕົວ",
+  "appDescription": "ຄຸ້ມຄອງການເງິນຂອງທ່ານໃຫ້ງ່າຍຂຶ້ນ",
+  "createAccount": "ສ້າງບັນຊີ",
+  "username": "ຊື່ຜູ້ໃຊ້",
+  "email": "ອີເມລ",
+  "password": "ລະຫັດຜ່ານ",
+  "login": "ເຂົ້າລະບົບ",
+  "register": "ລົງທະບຽນ",
+  "registering": "ກຳລັງລົງທະບຽນ...",
+  "alreadyHaveAccount": "ມີບັນຊີແລ້ວບໍ?",
+  "allFieldsRequired": "ຕ້ອງການກອກຂໍ້ມູນທັງໝົດ",
+  "passwordMinLength": "ລະຫັດຜ່ານຕ້ອງຢ່າງຕໍ່າ 6 ຕົວອັກສອນ",
+  "registrationFailed": "ລົງທະບຽນບໍ່ສໍາເລັດ ລອງອີກຄັ້ງ"
+}

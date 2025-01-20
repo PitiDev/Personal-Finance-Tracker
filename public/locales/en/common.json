@@ -1,0 +1,15 @@
+{
+    "appTitle": "Personal Finance Tracker",
+    "appDescription": "Manage your finances with ease",
+    "createAccount": "Create Account",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "register": "Register",
+    "registering": "Registering...",
+    "alreadyHaveAccount": "Already have an account?",
+    "allFieldsRequired": "All fields are required",
+    "passwordMinLength": "Password must be at least 6 characters long",
+    "registrationFailed": "Registration failed. Please try again."
+  }

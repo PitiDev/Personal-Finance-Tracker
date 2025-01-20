@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao&family=Noto+Sans+JP&family=Noto+Sans+Thai&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Rest of your global styles */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --font-lao: 'Noto Sans Lao', sans-serif;
+  --font-en: 'Arial', sans-serif;
+  --font-th: 'Sarabun', sans-serif;
+  --font-jp: 'Noto Sans JP', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+html,
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: 'Noto Sans Lao', 'Noto Sans JP', 'Noto Sans Thai', sans-serif;
+}
+
+/* Language-specific font classes */
+.font-lao {
+  font-family: 'Noto Sans Lao', 'Noto Sans JP', 'Noto Sans Thai', sans-serif;
+}
+
+/* Select element styling */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%;
+  background-size: 1em auto;
+}
+
+/* Custom styles for the language switcher */
+.language-switcher {
+  @apply bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 ease-in-out;
+}
+
+.language-switcher option {
+  @apply py-1;
+}

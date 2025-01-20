@@ -1,0 +1,15 @@
+{
+    "appTitle": "ตัวติดตามการเงินส่วนบุคคล",
+    "appDescription": "จัดการการเงินของคุณได้อย่างง่ายดาย",
+    "createAccount": "สร้างบัญชี",
+    "username": "ชื่อผู้ใช้",
+    "email": "อีเมล",
+    "password": "รหัสผ่าน",
+    "login": "เข้าสู่ระบบ",
+    "register": "ลงทะเบียน",
+    "registering": "กำลังลงทะเบียน...",
+    "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
+    "allFieldsRequired": "ต้องกรอกข้อมูลทุกช่อง",
+    "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+    "registrationFailed": "การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง"
+}

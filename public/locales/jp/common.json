@@ -1,0 +1,15 @@
+{
+  "appTitle": "個人財務トラッカー",
+  "appDescription": "簡単に財務を管理できます",
+  "createAccount": "アカウントを作成",
+  "username": "ユーザー名",
+  "email": "メールアドレス",
+  "password": "パスワード",
+  "login": "ログイン",
+  "register": "登録",
+  "registering": "登録中...",
+  "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+  "allFieldsRequired": "すべてのフィールドは必須です",
+  "passwordMinLength": "パスワードは6文字以上でなければなりません",
+  "registrationFailed": "登録に失敗しました。もう一度お試しください。"
+}
