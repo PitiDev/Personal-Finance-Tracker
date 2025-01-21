@@ -14,7 +14,7 @@ export const getDictionary = async (locale: Locale) => {
     }
 
     if (!(locale in dictionaries)) {
-        console.error(`Dictionary for locale '${locale}' not found`);
+        // console.error(`Dictionary for locale '${locale}' not found`);
         return dictionaries['en']();
     }
 

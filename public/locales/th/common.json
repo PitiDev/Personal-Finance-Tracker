@@ -11,5 +11,32 @@
     "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
     "allFieldsRequired": "ต้องกรอกข้อมูลทุกช่อง",
     "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
-    "registrationFailed": "การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง"
+    "registrationFailed": "การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง",
+    "dashboard": {
+        "title": "แดชบอร์ด",
+        "welcome": "ยินดีต้อนรับ",
+        "logout": "ออกจากระบบ",
+        "quickOverview": "ภาพรวมโดยย่อ",
+        "recentTransactions": "รายการธุรกรรมล่าสุด",
+        "transactionListEmpty": "รายการธุรกรรมจะแสดงที่นี่",
+        "totalBalance": "ยอดรวมทั้งหมด",
+        "monthlyIncome": "รายได้ประจำเดือน",
+        "monthlyExpenses": "รายจ่ายประจำเดือน",
+        "loading": "กำลังโหลด..."
+    },
+    "sidebar": {
+        "title": "ระบบจัดการการเงิน",
+        "menu": {
+            "dashboard": "หน้าหลัก",
+            "userManagement": "จัดการผู้ใช้",
+            "categories": "หมวดหมู่",
+            "transactions": "ธุรกรรม",
+            "budgets": "งบประมาณ",
+            "account": "บัญชี",
+            "saving": "การออม",
+            "loan": "เงินกู้",
+            "transferAmount": "โอนเงิน"
+        },
+        "logout": "ออกจากระบบ"
+    }
 }

@@ -11,5 +11,32 @@
   "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
   "allFieldsRequired": "すべてのフィールドは必須です",
   "passwordMinLength": "パスワードは6文字以上でなければなりません",
-  "registrationFailed": "登録に失敗しました。もう一度お試しください。"
+  "registrationFailed": "登録に失敗しました。もう一度お試しください。",
+  "dashboard": {
+    "title": "ダッシュボード",
+    "welcome": "ようこそ",
+    "logout": "ログアウト",
+    "quickOverview": "クイック概要",
+    "recentTransactions": "最近の取引",
+    "transactionListEmpty": "取引リストはここに表示されます。",
+    "totalBalance": "総残高",
+    "monthlyIncome": "月間収入",
+    "monthlyExpenses": "月間支出",
+    "loading": "読み込み中..."
+  },
+  "sidebar": {
+    "title": "財務管理システム",
+    "menu": {
+      "dashboard": "ダッシュボード",
+      "userManagement": "ユーザー管理",
+      "categories": "カテゴリ",
+      "transactions": "取引",
+      "budgets": "予算",
+      "account": "アカウント",
+      "saving": "貯金",
+      "loan": "ローン",
+      "transferAmount": "送金"
+    },
+    "logout": "ログアウト"
+  }
 }

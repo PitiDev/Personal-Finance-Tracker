@@ -11,5 +11,32 @@
   "alreadyHaveAccount": "ມີບັນຊີແລ້ວບໍ?",
   "allFieldsRequired": "ຕ້ອງການກອກຂໍ້ມູນທັງໝົດ",
   "passwordMinLength": "ລະຫັດຜ່ານຕ້ອງຢ່າງຕໍ່າ 6 ຕົວອັກສອນ",
-  "registrationFailed": "ລົງທະບຽນບໍ່ສໍາເລັດ ລອງອີກຄັ້ງ"
+  "registrationFailed": "ລົງທະບຽນບໍ່ສໍາເລັດ ລອງອີກຄັ້ງ",
+  "dashboard": {
+    "title": "ໜ້າຫຼັກ",
+    "welcome": "ຍິນດີຕ້ອນຮັບ",
+    "logout": "ອອກຈາກລະບົບ",
+    "quickOverview": "ພາບລວມ",
+    "recentTransactions": "ທຸລະກຳຫຼ້າສຸດ",
+    "transactionListEmpty": "ລາຍການທຸລະກຳ",
+    "totalBalance": "ຍອດເງິນທັງໝົດ",
+    "monthlyIncome": "ລາຍຮັບປະຈຳເດືອນ",
+    "monthlyExpenses": "ລາຍຈ່າຍປະຈຳເດືອນ",
+    "loading": "ກຳລັງໂຫຼດ..."
+  },
+  "sidebar": {
+    "title": "ຈັດການການເງິນ",
+    "menu": {
+      "dashboard": "ໜ້າຫຼັກ",
+      "userManagement": "ຈັດການຜູ້ໃຊ້",
+      "categories": "ໝວດໝູ່",
+      "transactions": "ການເຄື່ອນໄຫວ",
+      "budgets": "ງົບປະມານ",
+      "account": "ບັນຊີ",
+      "saving": "ການອອມ",
+      "loan": "ເງິນກູ້",
+      "transferAmount": "ໂອນເງິນ"
+    },
+    "logout": "ອອກຈາກລະບົບ"
+  }
 }

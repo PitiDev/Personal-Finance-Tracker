@@ -1,15 +1,42 @@
 {
-    "appTitle": "Personal Finance Tracker",
-    "appDescription": "Manage your finances with ease",
-    "createAccount": "Create Account",
-    "username": "Username",
-    "email": "Email",
-    "password": "Password",
-    "login": "Login",
-    "register": "Register",
-    "registering": "Registering...",
-    "alreadyHaveAccount": "Already have an account?",
-    "allFieldsRequired": "All fields are required",
-    "passwordMinLength": "Password must be at least 6 characters long",
-    "registrationFailed": "Registration failed. Please try again."
+  "appTitle": "Personal Finance Tracker",
+  "appDescription": "Manage your finances with ease",
+  "createAccount": "Create Account",
+  "username": "Username",
+  "email": "Email",
+  "password": "Password",
+  "login": "Login",
+  "register": "Register",
+  "registering": "Registering...",
+  "alreadyHaveAccount": "Already have an account?",
+  "allFieldsRequired": "All fields are required",
+  "passwordMinLength": "Password must be at least 6 characters long",
+  "registrationFailed": "Registration failed. Please try again.",
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "quickOverview": "Quick Overview",
+    "recentTransactions": "Recent Transactions",
+    "transactionListEmpty": "Transaction list will be displayed here.",
+    "totalBalance": "Total Balance",
+    "monthlyIncome": "Monthly Income",
+    "monthlyExpenses": "Monthly Expenses",
+    "loading": "Loading..."
+  },
+  "sidebar": {
+    "title": "Financial Manager",
+    "menu": {
+      "dashboard": "Dashboard",
+      "userManagement": "User Management",
+      "categories": "Categories",
+      "transactions": "Transactions",
+      "budgets": "Budgets",
+      "account": "Account",
+      "saving": "Saving",
+      "loan": "Loan",
+      "transferAmount": "Transfer Amount"
+    },
+    "logout": "Logout"
   }
+}
