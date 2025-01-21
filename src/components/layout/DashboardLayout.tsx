@@ -5,6 +5,9 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import Sidebar from './Sidebar'
 import { cn } from '@/lib/utils'
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+
 
 export default function DashboardLayout({
     children

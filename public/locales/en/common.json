@@ -38,5 +38,144 @@
       "transferAmount": "Transfer Amount"
     },
     "logout": "Logout"
+  },
+  "accountPage": {
+    "title": "My Accounts",
+    "totalBalance": {
+      "title": "Total Balance Across All Accounts",
+      "addAccount": "Add Account"
+    },
+    "emptyState": {
+      "title": "No Accounts Yet",
+      "description": "Start managing your finances by adding your first account",
+      "actionButton": "Add First Account"
+    },
+    "accountTypes": {
+      "bank": "Bank Account",
+      "cash": "Cash",
+      "credit": "Credit Card",
+      "investment": "Investment Account"
+    },
+    "accountSummary": {
+      "currentBalance": "Current Balance",
+      "income": "Total Income",
+      "expenses": "Total Expenses",
+      "transactions": "Transactions"
+    },
+    "actions": {
+      "dashboard": "Dashboard",
+      "logout": "Logout",
+      "viewDetails": "View Details"
+    },
+    "errors": {
+      "fetchAccounts": "Failed to load accounts",
+      "addAccount": "Failed to add new account"
+    },
+    "filterAndSort": {
+      "sortBy": "Sort By",
+      "filterBy": "Filter By",
+      "sortOptions": {
+        "balance": "Balance",
+        "name": "Account Name",
+        "type": "Account Type",
+        "recentActivity": "Recent Activity"
+      },
+      "filterOptions": {
+        "allAccounts": "All Accounts",
+        "bankAccounts": "Bank Accounts",
+        "cashAccounts": "Cash Accounts",
+        "creditCards": "Credit Cards",
+        "investmentAccounts": "Investment Accounts"
+      }
+    },
+    "deleteAccount": {
+      "cannotDeleteTitle": "Cannot Delete Account",
+      "transactionsExistError": "You cannot delete an account with existing transactions. Please clear all transactions first.",
+      "successMessage": "Account deleted successfully",
+      "errorTitle": "Delete Account Error"
+    }
+  },
+  "addAccountModal": {
+    "title": "Create New Account",
+    "accountName": {
+      "label": "Account Name",
+      "placeholder": "e.g., Main Savings Account"
+    },
+    "accountType": {
+      "label": "Account Type",
+      "placeholder": "Select Account Type"
+    },
+    "initialBalance": {
+      "label": "Initial Balance",
+      "placeholder": "Enter initial balance"
+    },
+    "currency": {
+      "label": "Currency",
+      "placeholder": "Select Currency"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "create": "Create Account",
+      "creating": "Creating..."
+    },
+    "validation": {
+      "required": "This field is required",
+      "minBalance": "Balance must be 0 or greater"
+    }
+  },
+  "deleteAccount": {
+    "title": "Delete Account",
+    "confirmation": "Are you sure you want to delete this account? This action cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Delete Account",
+    "deleting": "Deleting..."
+  },
+  "transfers": {
+    "title": "Transfers",
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "transferFormTitle": "New Transfer",
+    "sourceAccount": "Source Account",
+    "destinationAccount": "Destination Account",
+    "selectSourceAccount": "Select Source Account",
+    "selectDestinationAccount": "Select Destination Account",
+    "transferAmount": "Transfer Amount",
+    "transferDescription": "Description (Optional)",
+    "transferSubmitButton": "Transfer Funds",
+    "sourceAccountRequired": "Source account is required",
+    "destinationAccountRequired": "Destination account is required",
+    "amountRequired": "Transfer amount is required",
+    "minimumAmountError": "Minimum transfer amount is $0.01",
+    "descriptionMaxLengthError": "Description cannot exceed 255 characters",
+    "transferSuccessMessage": "Transfer completed successfully!",
+    "transferErrorMessage": "Failed to process transfer. Please try again.",
+    "processing": "Processing...",
+    "transferHistory": "Transfer History",
+    "noTransfersFound": "No transfers found",
+    "date": "Date",
+    "fromAccount": "From Account",
+    "toAccount": "To Account",
+    "amount": "Amount",
+    "description": "Description",
+    "page": "Page",
+    "of": "of",
+    "historyFetchError": "Failed to load transfer history",
+    "conversionDetails": "Conversion Details",
+    "sourceCurrency": "Source Currency",
+    "destinationCurrency": "Destination Currency",
+    "conversionRate": "Conversion Rate",
+    "transferFee": "Transfer Fee"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "logout": "Logout",
+    "recentTransactions": "Recent Transactions",
+    "refresh": "Refresh",
+    "noTransactionsFound": "No transactions found",
+    "date": "Date",
+    "description": "Description",
+    "category": "Category",
+    "amount": "Amount",
+    "type": "Type"
   }
 }

@@ -35,11 +35,7 @@ const menuItems = [
         icon: PieChart,
         href: "/dashboard"
     },
-    {
-        key: "userManagement",
-        icon: Users,
-        href: "/users"
-    },
+
     {
         key: "categories",
         icon: FolderTree,
@@ -74,7 +70,12 @@ const menuItems = [
         key: "transferAmount",
         icon: ArrowRightLeft,
         href: "/transfer"
-    }
+    },
+    {
+        key: "userManagement",
+        icon: Users,
+        href: "/users"
+    },
 ]
 
 export default function Sidebar({ onToggle }: SidebarProps) {

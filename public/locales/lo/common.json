@@ -38,5 +38,144 @@
       "transferAmount": "ໂອນເງິນ"
     },
     "logout": "ອອກຈາກລະບົບ"
+  },
+  "accountPage": {
+    "title": "ບັນຊີຂອງຂ້ອຍ",
+    "totalBalance": {
+      "title": "ຍອດເງິນລວມຂອງບັນຊີທັງໝົດ",
+      "addAccount": "ເພີ່ມບັນຊີ"
+    },
+    "emptyState": {
+      "title": "ຍັງບໍ່ມີບັນຊີ",
+      "description": "ເລີ່ມຕົ້ນຄຸ້ມຄອງການເງິນໂດຍການເພີ່ມບັນຊີຂອງທ່ານ",
+      "actionButton": "ເພີ່ມບັນຊີແລ້ວ"
+    },
+    "accountTypes": {
+      "bank": "ບັນຊີທະນາຄານ",
+      "cash": "ເງິນສົດ",
+      "credit": "ບັດເຄຣດິດ",
+      "investment": "ບັນຊີການລົງທຶນ"
+    },
+    "accountSummary": {
+      "currentBalance": "ຍອດເງິນປະຈຸບັນ",
+      "income": "ລາຍຮັບທັງໝົດ",
+      "expenses": "ລາຍຈ່າຍທັງໝົດ",
+      "transactions": "ທຸລະກຳ"
+    },
+    "actions": {
+      "dashboard": "ໜ້າຫຼັກ",
+      "logout": "ອອກຈາກລະບົບ",
+      "viewDetails": "ເບິ່ງລາຍລະອຽດ"
+    },
+    "errors": {
+      "fetchAccounts": "ບໍ່ສາມາດໂຫຼດບັນຊີໄດ້",
+      "addAccount": "ບໍ່ສາມາດເພີ່ມບັນຊີໃໝ່ໄດ້"
+    },
+    "filterAndSort": {
+      "sortBy": "ຈັດຮຽງຕາມ",
+      "filterBy": "ຕົວກອງ",
+      "sortOptions": {
+        "balance": "ຍອດເງິນ",
+        "name": "ຊື່ບັນຊີ",
+        "type": "ປະເພດບັນຊີ",
+        "recentActivity": "ກິດຈະກຳຫຼ້າສຸດ"
+      },
+      "filterOptions": {
+        "allAccounts": "ບັນຊີທັງໝົດ",
+        "bankAccounts": "ບັນຊີທະນາຄານ",
+        "cashAccounts": "ບັນຊີເງິນສົດ",
+        "creditCards": "ບັດເຄຣດິດ",
+        "investmentAccounts": "ບັນຊີການລົງທຶນ"
+      }
+    },
+    "deleteAccount": {
+      "cannotDeleteTitle": "ບໍ່ສາມາດລຶບບັນຊີ",
+      "transactionsExistError": "ທ່ານບໍ່ສາມາດລຶບບັນຊີທີ່ມີການເຄື່ອນໄຫວຢູ່ ກະລຸນາລຶບການເຄື່ອນໄຫວທັງໝົດກ່ອນ",
+      "successMessage": "ລຶບບັນຊີສຳເລັດ",
+      "errorTitle": "ການລຶບບັນຊີບໍ່ສຳເລັດ"
+    }
+  },
+  "addAccountModal": {
+    "title": "ສ້າງບັນຊີໃໝ່",
+    "accountName": {
+      "label": "ຊື່ບັນຊີ",
+      "placeholder": "ຕົວຢ່າງ: ບັນຊີເງິນຝາກຫຼັກ"
+    },
+    "accountType": {
+      "label": "ປະເພດບັນຊີ",
+      "placeholder": "ເລືອກປະເພດບັນຊີ"
+    },
+    "initialBalance": {
+      "label": "ຍອດເງິນເລີ່ມຕົ້ນ",
+      "placeholder": "ປ້ອນຍອດເງິນເລີ່ມຕົ້ນ"
+    },
+    "currency": {
+      "label": "ສະກຸນເງິນ",
+      "placeholder": "ເລືອກສະກຸນເງິນ"
+    },
+    "buttons": {
+      "cancel": "ຍົກເລີກ",
+      "create": "ສ້າງບັນຊີ",
+      "creating": "ກຳລັງສ້າງ..."
+    },
+    "validation": {
+      "required": "ຕ້ອງປ້ອນຂໍ້ມູນ",
+      "minBalance": "ຍອດເງິນຕ້ອງຫຼາຍກວ່າຫຼືເທົ່າກັບ 0"
+    }
+  },
+  "deleteAccount": {
+    "title": "ລຶບບັນຊີ",
+    "confirmation": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບບັນຊີນີ້? ການກະທໍານີ້ບໍ່ສາມາດຍ້ອນກັບຄືນໄດ້.",
+    "cancel": "ຍົກເລີກ",
+    "confirm": "ລຶບບັນຊີ",
+    "deleting": "ກຳລັງລຶບ..."
+  },
+  "transfers": {
+    "title": "ໂອນເງິນ",
+    "welcome": "ຍິນດີຕ້ອນຮັບ",
+    "logout": "ອອກຈາກລະບົບ",
+    "transferFormTitle": "ໂອນເງິນໃໝ່",
+    "sourceAccount": "ບັນຊີຕົ້ນທາງ",
+    "destinationAccount": "ບັນຊີປາຍທາງ",
+    "selectSourceAccount": "ເລືອກບັນຊີຕົ້ນທາງ",
+    "selectDestinationAccount": "ເລືອກບັນຊີປາຍທາງ",
+    "transferAmount": "ຈຳນວນເງິນໂອນ",
+    "transferDescription": "ຄຳອະທິບາຍ (ບໍ່ຈຳເປັນ)",
+    "transferSubmitButton": "ໂອນເງິນ",
+    "sourceAccountRequired": "ຕ້ອງເລືອກບັນຊີຕົ້ນທາງ",
+    "destinationAccountRequired": "ຕ້ອງເລືອກບັນຊີປາຍທາງ",
+    "amountRequired": "ຕ້ອງປ້ອນຈຳນວນເງິນໂອນ",
+    "minimumAmountError": "ຈຳນວນເງິນໂອນຕ່ຳສຸດແມ່ນ 0.01",
+    "descriptionMaxLengthError": "ຄຳອະທິບາຍຕ້ອງບໍ່ເກີນ 255 ຕົວອັກສອນ",
+    "transferSuccessMessage": "ໂອນເງິນສຳເລັດ!",
+    "transferErrorMessage": "ບໍ່ສາມາດໂອນເງິນໄດ້. ກະລຸນາລອງໃໝ່.",
+    "processing": "ກຳລັງດຳເນີນການ...",
+    "transferHistory": "ປະຫວັດການໂອນເງິນ",
+    "noTransfersFound": "ບໍ່ມີປະຫວັດການໂອນເງິນ",
+    "date": "ວັນທີ",
+    "fromAccount": "ຈາກບັນຊີ",
+    "toAccount": "ຫາບັນຊີ",
+    "amount": "ຈຳນວນ",
+    "description": "ຄຳອະທິບາຍ",
+    "page": "ໜ້າ",
+    "of": "ຈາກ",
+    "historyFetchError": "ບໍ່ສາມາດໂຫລດປະຫວັດການໂອນເງິນໄດ້",
+    "conversionDetails": "ລາຍລະອຽດການແລກປ່ຽນ",
+    "sourceCurrency": "ສະກຸນເງິນຕົ້ນທາງ",
+    "destinationCurrency": "ສະກຸນເງິນປາຍທາງ",
+    "conversionRate": "ອັດຕາແລກປ່ຽນ",
+    "transferFee": "ຄ່າທຳນຽມການໂອນ"
+  },
+  "transactions": {
+    "title": "ທຸລະກຳ",
+    "logout": "ອອກຈາກລະບົບ",
+    "recentTransactions": "ທຸລະກຳລ່າສຸດ",
+    "refresh": "ຟື້ນຟູ",
+    "noTransactionsFound": "ບໍ່ພົບທຸລະກຳ",
+    "date": "ວັນທີ",
+    "description": "ຄຳອະທິບາຍ",
+    "category": "ປະເພດ",
+    "amount": "ຈຳນວນ",
+    "type": "ປະເພດ"
   }
 }

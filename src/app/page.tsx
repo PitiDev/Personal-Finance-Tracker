@@ -13,7 +13,9 @@ import {
   Wallet,
   PiggyBank,
   ArrowRight,
-  Loader2
+  Loader2,
+  Calculator,
+  BarChart3
 } from 'lucide-react'
 
 interface Dictionary {
@@ -70,8 +72,11 @@ export default function Home({ lang }: { lang: Locale }) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
+       <div className="relative">
+        <Calculator className="h-16 w-16 text-blue-500 animate-pulse" />
+        <BarChart3 className="h-8 w-8 text-green-500 absolute -right-4 -bottom-2 animate-bounce" />
+      </div>
       </div>
     )
   }

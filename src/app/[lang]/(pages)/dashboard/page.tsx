@@ -13,7 +13,8 @@ import {
     TrendingDown,
     LineChart as LineChartIcon,
     PiggyBank,
-    Target
+    Target,
+    Banknote
 } from 'lucide-react'
 import { getDictionary } from '../../../../../get-dictionary'
 import { Locale } from '../../../i18n-config'
@@ -335,19 +336,19 @@ export default function DashboardPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <DashboardWidget
                         title={dictionary.dashboard.totalBalance}
-                        value={`$${formatAmount(data?.savings_goal_summary.total_saved || '0')}`}
+                        value={`${formatAmount(data?.savings_goal_summary.total_saved || '0')}`}
                         color="green"
-                        icon={<DollarSign className="w-6 h-6" />}
+                        icon={<PiggyBank className="w-6 h-6" />}
                     />
                     <DashboardWidget
                         title={dictionary.dashboard.monthlyIncome}
-                        value={`$${formatAmount(income?.total_amount || '0')}`}
+                        value={`${formatAmount(income?.total_amount || '0')}`}
                         color="blue"
                         icon={<TrendingUp className="w-6 h-6" />}
                     />
                     <DashboardWidget
                         title={dictionary.dashboard.monthlyExpenses}
-                        value={`$${formatAmount(expense?.total_amount || '0')}`}
+                        value={`${formatAmount(expense?.total_amount || '0')}`}
                         color="red"
                         icon={<TrendingDown className="w-6 h-6" />}
                     />

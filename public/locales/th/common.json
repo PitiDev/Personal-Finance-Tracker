@@ -1,42 +1,181 @@
 {
-    "appTitle": "ตัวติดตามการเงินส่วนบุคคล",
-    "appDescription": "จัดการการเงินของคุณได้อย่างง่ายดาย",
-    "createAccount": "สร้างบัญชี",
-    "username": "ชื่อผู้ใช้",
-    "email": "อีเมล",
-    "password": "รหัสผ่าน",
-    "login": "เข้าสู่ระบบ",
-    "register": "ลงทะเบียน",
-    "registering": "กำลังลงทะเบียน...",
-    "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
-    "allFieldsRequired": "ต้องกรอกข้อมูลทุกช่อง",
-    "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
-    "registrationFailed": "การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง",
-    "dashboard": {
-        "title": "แดชบอร์ด",
-        "welcome": "ยินดีต้อนรับ",
-        "logout": "ออกจากระบบ",
-        "quickOverview": "ภาพรวมโดยย่อ",
-        "recentTransactions": "รายการธุรกรรมล่าสุด",
-        "transactionListEmpty": "รายการธุรกรรมจะแสดงที่นี่",
-        "totalBalance": "ยอดรวมทั้งหมด",
-        "monthlyIncome": "รายได้ประจำเดือน",
-        "monthlyExpenses": "รายจ่ายประจำเดือน",
-        "loading": "กำลังโหลด..."
+  "appTitle": "ตัวติดตามการเงินส่วนบุคคล",
+  "appDescription": "จัดการการเงินของคุณได้อย่างง่ายดาย",
+  "createAccount": "สร้างบัญชี",
+  "username": "ชื่อผู้ใช้",
+  "email": "อีเมล",
+  "password": "รหัสผ่าน",
+  "login": "เข้าสู่ระบบ",
+  "register": "ลงทะเบียน",
+  "registering": "กำลังลงทะเบียน...",
+  "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
+  "allFieldsRequired": "ต้องกรอกข้อมูลทุกช่อง",
+  "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+  "registrationFailed": "การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง",
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "welcome": "ยินดีต้อนรับ",
+    "logout": "ออกจากระบบ",
+    "quickOverview": "ภาพรวมโดยย่อ",
+    "recentTransactions": "รายการธุรกรรมล่าสุด",
+    "transactionListEmpty": "รายการธุรกรรมจะแสดงที่นี่",
+    "totalBalance": "ยอดรวมทั้งหมด",
+    "monthlyIncome": "รายได้ประจำเดือน",
+    "monthlyExpenses": "รายจ่ายประจำเดือน",
+    "loading": "กำลังโหลด..."
+  },
+  "sidebar": {
+    "title": "ระบบจัดการการเงิน",
+    "menu": {
+      "dashboard": "หน้าหลัก",
+      "userManagement": "จัดการผู้ใช้",
+      "categories": "หมวดหมู่",
+      "transactions": "ธุรกรรม",
+      "budgets": "งบประมาณ",
+      "account": "บัญชี",
+      "saving": "การออม",
+      "loan": "เงินกู้",
+      "transferAmount": "โอนเงิน"
     },
-    "sidebar": {
-        "title": "ระบบจัดการการเงิน",
-        "menu": {
-            "dashboard": "หน้าหลัก",
-            "userManagement": "จัดการผู้ใช้",
-            "categories": "หมวดหมู่",
-            "transactions": "ธุรกรรม",
-            "budgets": "งบประมาณ",
-            "account": "บัญชี",
-            "saving": "การออม",
-            "loan": "เงินกู้",
-            "transferAmount": "โอนเงิน"
-        },
-        "logout": "ออกจากระบบ"
+    "logout": "ออกจากระบบ"
+  },
+  "accountPage": {
+    "title": "บัญชีของฉัน",
+    "totalBalance": {
+      "title": "ยอดเงินรวมทั้งหมด",
+      "addAccount": "เพิ่มบัญชี"
+    },
+    "emptyState": {
+      "title": "ยังไม่มีบัญชี",
+      "description": "เริ่มจัดการการเงินโดยการเพิ่มบัญชีแรกของคุณ",
+      "actionButton": "เพิ่มบัญชีแรก"
+    },
+    "accountTypes": {
+      "bank": "บัญชีธนาคาร",
+      "cash": "เงินสด",
+      "credit": "บัตรเครดิต",
+      "investment": "บัญชีการลงทุน"
+    },
+    "accountSummary": {
+      "currentBalance": "ยอดคงเหลือปัจจุบัน",
+      "income": "รายได้ทั้งหมด",
+      "expenses": "ค่าใช้จ่ายทั้งหมด",
+      "transactions": "ธุรกรรม"
+    },
+    "actions": {
+      "dashboard": "แดชบอร์ด",
+      "logout": "ออกจากระบบ",
+      "viewDetails": "ดูรายละเอียด"
+    },
+    "errors": {
+      "fetchAccounts": "โหลดบัญชีไม่สำเร็จ",
+      "addAccount": "เพิ่มบัญชีใหม่ไม่สำเร็จ"
+    },
+    "filterAndSort": {
+      "sortBy": "เรียงตาม",
+      "filterBy": "กรอง",
+      "sortOptions": {
+        "balance": "ยอดเงิน",
+        "name": "ชื่อบัญชี",
+        "type": "ประเภทบัญชี",
+        "recentActivity": "กิจกรรมล่าสุด"
+      },
+      "filterOptions": {
+        "allAccounts": "ทุกบัญชี",
+        "bankAccounts": "บัญชีธนาคาร",
+        "cashAccounts": "บัญชีเงินสด",
+        "creditCards": "บัตรเครดิต",
+        "investmentAccounts": "บัญชีการลงทุน"
+      }
+    },
+    "deleteAccount": {
+      "cannotDeleteTitle": "ไม่สามารถลบบัญชี",
+      "transactionsExistError": "คุณไม่สามารถลบบัญชีที่มีธุรกรรมอยู่ โปรดลบธุรกรรมทั้งหมดก่อน",
+      "successMessage": "ลบบัญชีสำเร็จ",
+      "errorTitle": "การลบบัญชีล้มเหลว"
     }
+  },
+  "addAccountModal": {
+    "title": "สร้างบัญชีใหม่",
+    "accountName": {
+      "label": "ชื่อบัญชี",
+      "placeholder": "เช่น: บัญชีออมทรัพย์หลัก"
+    },
+    "accountType": {
+      "label": "ประเภทบัญชี",
+      "placeholder": "เลือกประเภทบัญชี"
+    },
+    "initialBalance": {
+      "label": "ยอดเงินเริ่มต้น",
+      "placeholder": "ป้อนยอดเงินเริ่มต้น"
+    },
+    "currency": {
+      "label": "สกุลเงิน",
+      "placeholder": "เลือกสกุลเงิน"
+    },
+    "buttons": {
+      "cancel": "ยกเลิก",
+      "create": "สร้างบัญชี",
+      "creating": "กำลังสร้าง..."
+    },
+    "validation": {
+      "required": "ต้องระบุข้อมูล",
+      "minBalance": "ยอดเงินต้องมากกว่าหรือเท่ากับ 0"
+    }
+  },
+  "deleteAccount": {
+    "title": "ลบบัญชี",
+    "confirmation": "คุณแน่ใจหรือไม่ว่าต้องการลบบัญชีนี้? การดำเนินการนี้ไม่สามารถยกเลิกได้",
+    "cancel": "ยกเลิก",
+    "confirm": "ลบบัญชี",
+    "deleting": "กำลังลบ..."
+  },
+  "transfers": {
+    "title": "โอนเงิน",
+    "welcome": "ยินดีต้อนรับ",
+    "logout": "ออกจากระบบ",
+    "transferFormTitle": "โอนเงินใหม่",
+    "sourceAccount": "บัญชีต้นทาง",
+    "destinationAccount": "บัญชีปลายทาง",
+    "selectSourceAccount": "เลือกบัญชีต้นทาง",
+    "selectDestinationAccount": "เลือกบัญชีปลายทาง",
+    "transferAmount": "จำนวนเงินโอน",
+    "transferDescription": "คำอธิบาย (ไม่บังคับ)",
+    "transferSubmitButton": "โอนเงิน",
+    "sourceAccountRequired": "ต้องเลือกบัญชีต้นทาง",
+    "destinationAccountRequired": "ต้องเลือกบัญชีปลายทาง",
+    "amountRequired": "ต้องระบุจำนวนเงินโอน",
+    "minimumAmountError": "จำนวนเงินโอนขั้นต่ำคือ 0.01",
+    "descriptionMaxLengthError": "คำอธิบายต้องไม่เกิน 255 ตัวอักษร",
+    "transferSuccessMessage": "โอนเงินสำเร็จ!",
+    "transferErrorMessage": "ไม่สามารถโอนเงินได้ กรุณาลองใหม่อีกครั้ง",
+    "processing": "กำลังดำเนินการ...",
+    "transferHistory": "ประวัติการโอนเงิน",
+    "noTransfersFound": "ไม่พบประวัติการโอนเงิน",
+    "date": "วันที่",
+    "fromAccount": "จากบัญชี",
+    "toAccount": "ถึงบัญชี",
+    "amount": "จำนวน",
+    "description": "คำอธิบาย",
+    "page": "หน้า",
+    "of": "จาก",
+    "historyFetchError": "ไม่สามารถโหลดประวัติการโอนเงินได้",
+    "conversionDetails": "รายละเอียดการแลกเปลี่ยน",
+    "sourceCurrency": "สกุลเงินต้นทาง",
+    "destinationCurrency": "สกุลเงินปลายทาง",
+    "conversionRate": "อัตราแลกเปลี่ยน",
+    "transferFee": "ค่าธรรมเนียมการโอน"
+  },
+  "transactions": {
+    "title": "ธุรกรรม",
+    "logout": "ออกจากระบบ",
+    "recentTransactions": "ธุรกรรมล่าสุด",
+    "refresh": "ฟื้นฟู",
+    "noTransactionsFound": "ไม่พบธุรกรรม",
+    "date": "วันที่",
+    "description": "คำอธิบาย",
+    "category": "ประเภท",
+    "amount": "จำนวน",
+    "type": "ประเภท"
+  }
 }

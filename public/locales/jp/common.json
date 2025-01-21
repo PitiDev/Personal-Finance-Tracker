@@ -38,5 +38,144 @@
       "transferAmount": "送金"
     },
     "logout": "ログアウト"
+  },
+  "accountPage": {
+    "title": "マイアカウント",
+    "totalBalance": {
+      "title": "全口座の総残高",
+      "addAccount": "アカウント追加"
+    },
+    "emptyState": {
+      "title": "まだアカウントがありません",
+      "description": "最初のアカウントを追加して、財務管理を始めましょう",
+      "actionButton": "最初のアカウントを追加"
+    },
+    "accountTypes": {
+      "bank": "銀行口座",
+      "cash": "現金",
+      "credit": "クレジットカード",
+      "investment": "投資口座"
+    },
+    "accountSummary": {
+      "currentBalance": "現在の残高",
+      "income": "総収入",
+      "expenses": "総支出",
+      "transactions": "取引"
+    },
+    "actions": {
+      "dashboard": "ダッシュボード",
+      "logout": "ログアウト",
+      "viewDetails": "詳細を表示"
+    },
+    "errors": {
+      "fetchAccounts": "アカウントの読み込みに失敗しました",
+      "addAccount": "新しいアカウントの追加に失敗しました"
+    },
+    "filterAndSort": {
+      "sortBy": "並べ替え",
+      "filterBy": "フィルター",
+      "sortOptions": {
+        "balance": "残高",
+        "name": "アカウント名",
+        "type": "アカウントタイプ",
+        "recentActivity": "最近の活動"
+      },
+      "filterOptions": {
+        "allAccounts": "すべてのアカウント",
+        "bankAccounts": "銀行口座",
+        "cashAccounts": "現金口座",
+        "creditCards": "クレジットカード",
+        "investmentAccounts": "投資口座"
+      }
+    },
+    "deleteAccount": {
+      "cannotDeleteTitle": "アカウントを削除できません",
+      "transactionsExistError": "取引があるアカウントは削除できません。取引をすべて削除してください。",
+      "successMessage": "アカウントを削除しました",
+      "errorTitle": "アカウント削除エラー"
+    }
+  },
+  "addAccountModal": {
+    "title": "新規アカウント作成",
+    "accountName": {
+      "label": "アカウント名",
+      "placeholder": "例: メイン貯蓄口座"
+    },
+    "accountType": {
+      "label": "アカウントタイプ",
+      "placeholder": "アカウントタイプを選択"
+    },
+    "initialBalance": {
+      "label": "初期残高",
+      "placeholder": "初期残高を入力"
+    },
+    "currency": {
+      "label": "通貨",
+      "placeholder": "通貨を選択"
+    },
+    "buttons": {
+      "cancel": "キャンセル",
+      "create": "アカウント作成",
+      "creating": "作成中..."
+    },
+    "validation": {
+      "required": "入力が必要です",
+      "minBalance": "残高は0以上である必要があります"
+    }
+  },
+  "deleteAccount": {
+    "title": "アカウントを削除",
+    "confirmation": "このアカウントを削除してもよろしいですか？この操作は取り消しできません。",
+    "cancel": "キャンセル",
+    "confirm": "削除する",
+    "deleting": "削除中..."
+  },
+  "transfers": {
+    "title": "Transfers",
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "transferFormTitle": "New Transfer",
+    "sourceAccount": "Source Account",
+    "destinationAccount": "Destination Account",
+    "selectSourceAccount": "Select Source Account",
+    "selectDestinationAccount": "Select Destination Account",
+    "transferAmount": "Transfer Amount",
+    "transferDescription": "Description (Optional)",
+    "transferSubmitButton": "Transfer Funds",
+    "sourceAccountRequired": "Source account is required",
+    "destinationAccountRequired": "Destination account is required",
+    "amountRequired": "Transfer amount is required",
+    "minimumAmountError": "Minimum transfer amount is $0.01",
+    "descriptionMaxLengthError": "Description cannot exceed 255 characters",
+    "transferSuccessMessage": "Transfer completed successfully!",
+    "transferErrorMessage": "Failed to process transfer. Please try again.",
+    "processing": "Processing...",
+    "transferHistory": "Transfer History",
+    "noTransfersFound": "No transfers found",
+    "date": "Date",
+    "fromAccount": "From Account",
+    "toAccount": "To Account",
+    "amount": "Amount",
+    "description": "Description",
+    "page": "Page",
+    "of": "of",
+    "historyFetchError": "Failed to load transfer history",
+    "conversionDetails": "Conversion Details",
+    "sourceCurrency": "Source Currency",
+    "destinationCurrency": "Destination Currency",
+    "conversionRate": "Conversion Rate",
+    "transferFee": "Transfer Fee"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "logout": "Logout",
+    "recentTransactions": "Recent Transactions",
+    "refresh": "Refresh",
+    "noTransactionsFound": "No transactions found",
+    "date": "Date",
+    "description": "Description",
+    "category": "Category",
+    "amount": "Amount",
+    "type": "Type"
   }
 }
