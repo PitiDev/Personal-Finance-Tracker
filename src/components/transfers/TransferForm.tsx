@@ -3,22 +3,26 @@ import { useForm } from 'react-hook-form'
 import { useAuthStore } from '@/store/authStore'
 import axios from 'axios'
 import { toast } from 'sonner'
+import { formatAmount } from '@/lib/utils'
+import { ArrowRightLeft } from 'lucide-react'
 
 interface TransferFormProps {
     dictionary: any
 }
 
 interface Account {
-    id: number
+    account_id: number
     account_name: string
     account_type: string
+    currency: string
     balance: number
 }
 
 interface TransferData {
     from_account_id: number
     to_account_id: number
-    amount: number
+    amount: number,
+    currency: string,
     description: string
 }
 
@@ -26,12 +30,12 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
     const { token } = useAuthStore()
     const [accounts, setAccounts] = useState<Account[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    const { 
-        register, 
-        handleSubmit, 
-        reset, 
+    const {
+        register,
+        handleSubmit,
+        reset,
         formState: { errors },
-        watch 
+        watch
     } = useForm<TransferData>()
 
     // Fetch user accounts
@@ -70,10 +74,10 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
     }
 
     const fromAccountId = watch('from_account_id')
-    
+
     // Filter out the selected source account from destination accounts
     const destinationAccounts = accounts.filter(
-        account => account.id !== Number(fromAccountId)
+        account => account.account_id !== Number(fromAccountId)
     )
 
     return (
@@ -84,26 +88,23 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Source Account Dropdown */}
                 <div>
-                    <label 
-                        htmlFor="from_account_id" 
+                    <label
+                        htmlFor="from_account_id"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
                         {dictionary.sourceAccount}
                     </label>
                     <select
                         id="from_account_id"
-                        {...register('from_account_id', { 
-                            required: dictionary.sourceAccountRequired 
+                        {...register('from_account_id', {
+                            required: dictionary.sourceAccountRequired
                         })}
-                        className="block w-full rounded-md border-gray-300 dark:border-gray-600 
-                                   shadow-sm focus:border-blue-500 focus:ring-blue-500 
-                                   bg-white dark:bg-gray-700 
-                                   text-gray-900 dark:text-white"
+                        className="pl-10 shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     >
                         <option value="">{dictionary.selectSourceAccount}</option>
                         {accounts.map(account => (
-                            <option key={account.id} value={account.id}>
-                                {account.account_name} - ${account.balance.toLocaleString()}
+                            <option key={account.account_id} value={account.account_id}>
+                                {account.account_name} - ${formatAmount(account.balance)} {account.currency}
                             </option>
                         ))}
                     </select>
@@ -116,26 +117,23 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
 
                 {/* Destination Account Dropdown */}
                 <div>
-                    <label 
-                        htmlFor="to_account_id" 
+                    <label
+                        htmlFor="to_account_id"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
                         {dictionary.destinationAccount}
                     </label>
                     <select
                         id="to_account_id"
-                        {...register('to_account_id', { 
-                            required: dictionary.destinationAccountRequired 
+                        {...register('to_account_id', {
+                            required: dictionary.destinationAccountRequired
                         })}
-                        className="block w-full rounded-md border-gray-300 dark:border-gray-600 
-                                   shadow-sm focus:border-blue-500 focus:ring-blue-500 
-                                   bg-white dark:bg-gray-700 
-                                   text-gray-900 dark:text-white"
+                        className="pl-10 shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     >
                         <option value="">{dictionary.selectDestinationAccount}</option>
                         {destinationAccounts.map(account => (
-                            <option key={account.id} value={account.id}>
-                                {account.account_name} - ${account.balance.toLocaleString()}
+                            <option key={account.account_id} value={account.account_id}>
+                                {account.account_name} - ${formatAmount(account.balance)} {account.currency}
                             </option>
                         ))}
                     </select>
@@ -148,8 +146,8 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
 
                 {/* Transfer Amount */}
                 <div>
-                    <label 
-                        htmlFor="amount" 
+                    <label
+                        htmlFor="amount"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
                         {dictionary.transferAmount}
@@ -159,17 +157,14 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
                         id="amount"
                         step="0.01"
                         min="0"
-                        {...register('amount', { 
+                        {...register('amount', {
                             required: dictionary.amountRequired,
                             min: {
-                                value: 0.01, 
+                                value: 0.01,
                                 message: dictionary.minimumAmountError
                             }
                         })}
-                        className="block w-full rounded-md border-gray-300 dark:border-gray-600 
-                                   shadow-sm focus:border-blue-500 focus:ring-blue-500 
-                                   bg-white dark:bg-gray-700 
-                                   text-gray-900 dark:text-white"
+                        className="pl-10 shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     />
                     {errors.amount && (
                         <p className="text-red-500 text-xs mt-1">
@@ -180,17 +175,17 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
 
                 {/* Transfer Description */}
                 <div>
-                    <label 
-                        htmlFor="description" 
+                    <label
+                        htmlFor="description"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
                         {dictionary.transferDescription}
                     </label>
                     <textarea
                         id="description"
-                        {...register('description', { 
+                        {...register('description', {
                             maxLength: {
-                                value: 255, 
+                                value: 255,
                                 message: dictionary.descriptionMaxLengthError
                             }
                         })}
@@ -221,30 +216,14 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
                     >
                         {isLoading ? (
                             <div className="flex items-center">
-                                <svg 
-                                    className="animate-spin h-5 w-5 mr-3" 
-                                    xmlns="http://www.w3.org/2000/svg" 
-                                    fill="none" 
-                                    viewBox="0 0 24 24"
-                                >
-                                    <circle 
-                                        className="opacity-25" 
-                                        cx="12" 
-                                        cy="12" 
-                                        r="10" 
-                                        stroke="currentColor" 
-                                        strokeWidth="4"
-                                    />
-                                    <path 
-                                        className="opacity-75" 
-                                        fill="currentColor" 
-                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                    />
-                                </svg>
+                                <ArrowRightLeft className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                                 {dictionary.processing}
                             </div>
                         ) : (
-                            dictionary.transferSubmitButton
+                            <div className="flex items-center">
+                                <ArrowRightLeft className="h-8 w-8 text-white mr-2" />
+                                {dictionary.transferSubmitButton}
+                            </div>
                         )}
                     </button>
                 </div>

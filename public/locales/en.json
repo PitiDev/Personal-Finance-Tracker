@@ -177,5 +177,72 @@
     "category": "Category",
     "amount": "Amount",
     "type": "Type"
+  },
+  "categories": {
+    "title": "Categories",
+    "backToDashboard": "Back to Dashboard",
+    "addCategory": "Add Category",
+    "newCategory": "New Category",
+    "editCategory": "Edit Category",
+    "name": "Name",
+    "namePlaceholder": "e.g., Groceries",
+    "description": "Description",
+    "descriptionPlaceholder": "Add a description (optional)",
+    "type": "Category Type",
+    "categoryType": {
+      "income": "Income",
+      "expense": "Expense"
+    },
+    "actions": {
+      "create": "Create",
+      "update": "Update",
+      "delete": "Delete",
+      "edit": "Edit",
+      "cancel": "Cancel"
+    },
+    "messages": {
+      "createSuccess": "Category created successfully",
+      "updateSuccess": "Category updated successfully",
+      "deleteSuccess": "Category deleted successfully",
+      "deleteConfirm": "Are you sure you want to delete this category?",
+      "noDescription": "No description"
+    },
+    "sections": {
+      "incomeCategories": "Income Categories",
+      "expenseCategories": "Expense Categories",
+      "noIncomeCategories": "No income categories found",
+      "noExpenseCategories": "No expense categories found"
+    },
+    "created": "Created"
+  },
+  "savings": {
+    "title": "Savings Goals",
+    "addNewGoal": "Add New Goal",
+    "noGoalsTitle": "No Savings Goals Yet",
+    "noGoalsDescription": "Start by creating your first savings goal!",
+    "error": "Error",
+    "deleteConfirm": "Are you sure you want to delete this savings goal?",
+    "status": {
+      "completed": "Completed",
+      "ongoing": "Ongoing"
+    },
+    "fields": {
+      "target": "Target",
+      "current": "Current",
+      "progress": "Progress",
+      "targetDate": "Target Date",
+      "started": "Started",
+      "account": "Account"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "logout": "Logout"
+    },
+    "messages": {
+      "deleteSuccess": "Savings goal deleted successfully",
+      "deleteError": "Failed to delete savings goal",
+      "fetchError": "Failed to fetch savings goals"
+    }
   }
 }

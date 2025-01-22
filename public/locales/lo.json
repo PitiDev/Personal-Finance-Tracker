@@ -177,5 +177,73 @@
     "category": "ປະເພດ",
     "amount": "ຈຳນວນ",
     "type": "ປະເພດ"
+  },
+  "categories": {
+    "title": "ໝວດໝູ່",
+    "backToDashboard": "ກັບໄປໜ້າຫຼັກ",
+    "addCategory": "ເພີ່ມໝວດໝູ່",
+    "newCategory": "ໝວດໝູ່ໃໝ່",
+    "editCategory": "ແກ້ໄຂໝວດໝູ່",
+    "name": "ຊື່",
+    "namePlaceholder": "ຕົວຢ່າງ: ຄ່າອາຫານ",
+    "description": "ຄຳອະທິບາຍ",
+    "descriptionPlaceholder": "ເພີ່ມຄຳອະທິບາຍ (ບໍ່ຈຳເປັນ)",
+    "type": "ປະເພດໝວດໝູ່",
+    "categoryType": {
+      "income": "ລາຍຮັບ",
+      "expense": "ລາຍຈ່າຍ"
+    },
+    "actions": {
+      "create": "ສ້າງ",
+      "update": "ອັບເດດ",
+      "delete": "ລຶບ",
+      "edit": "ແກ້ໄຂ",
+      "cancel": "ຍົກເລີກ"
+    },
+    "messages": {
+      "createSuccess": "ສ້າງໝວດໝູ່ສຳເລັດ",
+      "updateSuccess": "ອັບເດດໝວດໝູ່ສຳເລັດ",
+      "deleteSuccess": "ລຶບໝວດໝູ່ສຳເລັດ",
+      "deleteConfirm": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບໝວດໝູ່ນີ້?",
+      "noDescription": "ບໍ່ມີຄຳອະທິບາຍ"
+    },
+    "sections": {
+      "incomeCategories": "ໝວດໝູ່ລາຍຮັບ",
+      "expenseCategories": "ໝວດໝູ່ລາຍຈ່າຍ",
+      "noIncomeCategories": "ບໍ່ພົບໝວດໝູ່ລາຍຮັບ",
+      "noExpenseCategories": "ບໍ່ພົບໝວດໝູ່ລາຍຈ່າຍ"
+    },
+    "created": "ສ້າງເມື່ອ"
+  },
+  "savings": {
+    "title": "ເປົ້າໝາຍການອອມເງິນ",
+    "addNewGoal": "ເພີ່ມເປົ້າໝາຍໃໝ່",
+    "noGoalsTitle": "ຍັງບໍ່ມີເປົ້າໝາຍການອອມເງິນ",
+    "noGoalsDescription": "ເລີ່ມຕົ້ນດ້ວຍການສ້າງເປົ້າໝາຍການອອມເງິນທຳອິດຂອງທ່ານ!",
+    "error": "ຂໍ້ຜິດພາດ",
+    "deleteConfirm": "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບເປົ້າໝາຍການອອມເງິນນີ້?",
+    "status": {
+      "completed": "ສຳເລັດແລ້ວ",
+      "ongoing": "ກຳລັງດຳເນີນການ"
+    },
+    "fields": {
+      "target": "ເປົ້າໝາຍ",
+      "current": "ປະຈຸບັນ",
+      "progress": "ຄວາມຄືບໜ້າ",
+      "targetDate": "ວັນທີເປົ້າໝາຍ",
+      "started": "ເລີ່ມຕົ້ນ",
+      "account": "ບັນຊີ"
+    },
+    "actions": {
+      "edit": "ແກ້ໄຂ",
+      "delete": "ລຶບ",
+      "logout": "ອອກຈາກລະບົບ"
+    },
+    "messages": {
+      "deleteSuccess": "ລຶບເປົ້າໝາຍການອອມເງິນສຳເລັດ",
+      "deleteError": "ລຶບເປົ້າໝາຍການອອມເງິນບໍ່ສຳເລັດ",
+      "fetchError": "ບໍ່ສາມາດດຶງຂໍ້ມູນເປົ້າໝາຍການອອມເງິນໄດ້"
+    }
   }
+  
 }

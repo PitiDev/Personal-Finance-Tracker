@@ -1,10 +1,10 @@
 import type { Locale } from './i18n-config'
 
 const dictionaries = {
-    en: () => import('./public/locales/en/common.json').then((module) => module.default),
-    lo: () => import('./public/locales/lo/common.json').then((module) => module.default),
-    th: () => import('./public/locales/th/common.json').then((module) => module.default),
-    jp: () => import('./public/locales/jp/common.json').then((module) => module.default),
+    en: () => import('./public/locales/en.json').then((module) => module.default),
+    lo: () => import('./public/locales/lo.json').then((module) => module.default),
+    th: () => import('./public/locales/th.json').then((module) => module.default),
+    jp: () => import('./public/locales/jp.json').then((module) => module.default),
 }
 
 export const getDictionary = async (locale: Locale) => {

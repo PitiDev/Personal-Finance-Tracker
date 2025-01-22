@@ -177,5 +177,72 @@
     "category": "ประเภท",
     "amount": "จำนวน",
     "type": "ประเภท"
+  },
+  "categories": {
+    "title": "หมวดหมู่",
+    "backToDashboard": "กลับไปหน้าแดชบอร์ด",
+    "addCategory": "เพิ่มหมวดหมู่",
+    "newCategory": "หมวดหมู่ใหม่",
+    "editCategory": "แก้ไขหมวดหมู่",
+    "name": "ชื่อ",
+    "namePlaceholder": "เช่น: ค่าอาหาร",
+    "description": "คำอธิบาย",
+    "descriptionPlaceholder": "เพิ่มคำอธิบาย (ไม่บังคับ)",
+    "type": "ประเภทหมวดหมู่",
+    "categoryType": {
+      "income": "รายรับ",
+      "expense": "รายจ่าย"
+    },
+    "actions": {
+      "create": "สร้าง",
+      "update": "อัปเดต",
+      "delete": "ลบ",
+      "edit": "แก้ไข",
+      "cancel": "ยกเลิก"
+    },
+    "messages": {
+      "createSuccess": "สร้างหมวดหมู่สำเร็จ",
+      "updateSuccess": "อัปเดตหมวดหมู่สำเร็จ",
+      "deleteSuccess": "ลบหมวดหมู่สำเร็จ",
+      "deleteConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบหมวดหมู่นี้?",
+      "noDescription": "ไม่มีคำอธิบาย"
+    },
+    "sections": {
+      "incomeCategories": "หมวดหมู่รายรับ",
+      "expenseCategories": "หมวดหมู่รายจ่าย",
+      "noIncomeCategories": "ไม่พบหมวดหมู่รายรับ",
+      "noExpenseCategories": "ไม่พบหมวดหมู่รายจ่าย"
+    },
+    "created": "สร้างเมื่อ"
+  },
+  "savings": {
+    "title": "เป้าหมายการออม",
+    "addNewGoal": "เพิ่มเป้าหมายใหม่",
+    "noGoalsTitle": "ยังไม่มีเป้าหมายการออม",
+    "noGoalsDescription": "เริ่มต้นด้วยการสร้างเป้าหมายการออมแรกของคุณ!",
+    "error": "ข้อผิดพลาด",
+    "deleteConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบเป้าหมายการออมนี้?",
+    "status": {
+      "completed": "สำเร็จ",
+      "ongoing": "กำลังดำเนินการ"
+    },
+    "fields": {
+      "target": "เป้าหมาย",
+      "current": "ปัจจุบัน",
+      "progress": "ความคืบหน้า",
+      "targetDate": "วันที่เป้าหมาย",
+      "started": "เริ่มต้น",
+      "account": "บัญชี"
+    },
+    "actions": {
+      "edit": "แก้ไข",
+      "delete": "ลบ",
+      "logout": "ออกจากระบบ"
+    },
+    "messages": {
+      "deleteSuccess": "ลบเป้าหมายการออมสำเร็จ",
+      "deleteError": "ลบเป้าหมายการออมไม่สำเร็จ",
+      "fetchError": "ไม่สามารถดึงข้อมูลเป้าหมายการออมได้"
+    }
   }
 }

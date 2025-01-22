@@ -210,16 +210,24 @@ const CategoryPage = () => {
         type: 'expense' as 'income' | 'expense'
     })
     const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
+    const [dictionary, setDictionary] = useState<any>({});
 
     // Toast management
     useEffect(() => {
-        if (toast) {
-            const timer = setTimeout(() => {
-                setToast(null)
-            }, 3000)
-            return () => clearTimeout(timer)
-        }
-    }, [toast])
+        const initializeDictionary = async () => {
+            const dict = await getDictionary(lang);
+            setDictionary(dict);
+        };
+
+        initializeDictionary();
+    }, [lang]);
+
+    if (toast) {
+        const timer = setTimeout(() => {
+            setToast(null)
+        }, 3000)
+        return () => clearTimeout(timer)
+    }
 
     // Form handling
     const handleSubmit = async (e: React.FormEvent) => {
@@ -292,17 +300,17 @@ const CategoryPage = () => {
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                     <div className="flex items-center space-x-4">
-                        <button
+                        {/* <button
                             onClick={() => router.push(`/${lang}/dashboard`)}
                             className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-500 transition-colors"
                         >
                             <ArrowLeft className="w-5 h-5 mr-2" />
-                            Back to Dashboard
-                        </button>
+                            {dictionary.categories.backToDashboard}
+                        </button> */}
                         <div className="flex items-center">
                             <Tags className="h-8 w-8 text-blue-500" />
                             <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white ml-2">
-                                Categories
+                                {dictionary.categories.title}
                             </h1>
                         </div>
                     </div>
@@ -314,7 +322,7 @@ const CategoryPage = () => {
                                      hover:bg-blue-600 transition-colors w-full md:w-auto"
                         >
                             <Plus className="w-5 h-5 mr-2" />
-                            Add Category
+                            {dictionary.categories.addCategory}
                         </button>
                     </div>
                 </div>
@@ -326,7 +334,7 @@ const CategoryPage = () => {
                         <div className="bg-white dark:bg-gray-800 rounded-lg w-full max-w-md p-6">
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                                    {editingCategory ? 'Edit Category' : 'New Category'}
+                                    {editingCategory ? dictionary.categories.editCategory : dictionary.categories.newCategory}
                                 </h2>
                                 <button onClick={resetForm} className="text-gray-500 hover:text-gray-700">
                                     <X className="w-5 h-5" />
@@ -335,7 +343,7 @@ const CategoryPage = () => {
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Name
+                                        {dictionary.categories.name}
                                     </label>
                                     <input
                                         type="text"
@@ -351,7 +359,7 @@ const CategoryPage = () => {
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Description
+                                        {dictionary.categories.description}
                                     </label>
                                     <textarea
                                         value={formData.description}
@@ -365,7 +373,7 @@ const CategoryPage = () => {
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                        Category Type
+                                        {dictionary.categories.type}
                                     </label>
                                     <select
                                         value={formData.type}
@@ -377,8 +385,8 @@ const CategoryPage = () => {
                                                  dark:border-gray-600 dark:bg-gray-700 dark:text-white
                                                  focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                     >
-                                        <option value="expense">Expense</option>
-                                        <option value="income">Income</option>
+                                        <option value="expense">{dictionary.categories.categoryType.expense}</option>
+                                        <option value="income">{dictionary.categories.categoryType.income}</option>
                                     </select>
                                 </div>
                                 <div className="flex justify-end space-x-3 pt-4">
@@ -387,13 +395,13 @@ const CategoryPage = () => {
                                         onClick={resetForm}
                                         className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800"
                                     >
-                                        Cancel
+                                        {dictionary.categories.actions.cancel}
                                     </button>
                                     <button
                                         type="submit"
                                         className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
                                     >
-                                        {editingCategory ? 'Update' : 'Create'}
+                                        {editingCategory ? dictionary.categories.actions.update : dictionary.categories.actions.create}
                                     </button>
                                 </div>
                             </form>
@@ -412,7 +420,7 @@ const CategoryPage = () => {
                         <div className="flex items-center mb-4">
                             <TrendingUp className="h-6 w-6 text-green-600 mr-2" />
                             <h2 className="text-xl font-bold text-green-900 dark:text-green-100">
-                                Income Categories
+                                {dictionary.categories.sections.incomeCategories}
                             </h2>
                         </div>
                         {groupedCategories.income && groupedCategories.income.length > 0 ? (
@@ -459,7 +467,7 @@ const CategoryPage = () => {
                         ) : (
                             <div className="bg-green-100/50 dark:bg-green-900/30 rounded-lg p-4 text-center">
                                 <p className="text-green-600 dark:text-green-300">
-                                    No income categories found
+                                    {dictionary.categories.sections.noIncomeCategories}
                                 </p>
                             </div>
                         )}
@@ -473,7 +481,7 @@ const CategoryPage = () => {
                         <div className="flex items-center mb-4">
                             <TrendingDown className="h-6 w-6 text-red-600 mr-2" />
                             <h2 className="text-xl font-bold text-red-900 dark:text-red-100">
-                                Expense Categories
+                                {dictionary.categories.sections.expenseCategories}
                             </h2>
                         </div>
                         {groupedCategories.expense && groupedCategories.expense.length > 0 ? (
@@ -527,8 +535,7 @@ const CategoryPage = () => {
                     </div>
                 </div>
 
-                {/* Toast */}
-                {toast && <Toast {...toast} />}
+               
             </div>
         </div>
     )

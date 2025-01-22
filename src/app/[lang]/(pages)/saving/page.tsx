@@ -119,14 +119,14 @@ export default function SavingsPage() {
     };
 
     const formatAmount = (amount: string) => {
-        return parseFloat(amount).toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        });
+        return new Intl.NumberFormat(lang, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(parseFloat(amount));
     };
 
-    const formatDate = (dateString: string) => {
-        return new Date(dateString).toLocaleDateString('en-US', {
+    const formatDate = (dateString: string, lang: string) => {
+        return new Date(dateString).toLocaleDateString(lang, {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
@@ -149,7 +149,7 @@ export default function SavingsPage() {
                     <div className="flex items-center space-x-2">
                         <PiggyBank className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-                            Savings Goals
+                            {dictionary.savings.title}
                         </h1>
                     </div>
                     <div className="flex items-center space-x-4">
@@ -162,7 +162,7 @@ export default function SavingsPage() {
                             className="flex items-center px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
                         >
                             <LogOut className="w-4 h-4 mr-2" />
-                            Logout
+                            {dictionary.savings.actions.logout}
                         </button>
                     </div>
                 </div>
@@ -173,7 +173,7 @@ export default function SavingsPage() {
                     className="mb-8 flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                 >
                     <Plus className="w-4 h-4 mr-2" />
-                    Add New Goal
+                    {dictionary.savings.addNewGoal}
                 </button>
 
                 <AddSavingsModal
@@ -211,7 +211,7 @@ export default function SavingsPage() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                                         <Target className="w-4 h-4 mr-2" />
-                                        Target:
+                                        {dictionary.savings.fields.target}:
                                     </div>
                                     <span className="font-medium text-gray-900 dark:text-white">
                                         {formatAmount(goal.target_amount)}
@@ -221,7 +221,7 @@ export default function SavingsPage() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                                         <DollarSign className="w-4 h-4 mr-2" />
-                                        Current:
+                                        {dictionary.savings.fields.current}:
                                     </div>
                                     <span className="font-medium text-gray-900 dark:text-white">
                                         {formatAmount(goal.current_amount)}
@@ -231,7 +231,7 @@ export default function SavingsPage() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                                         <TrendingUp className="w-4 h-4 mr-2" />
-                                        Progress:
+                                        {dictionary.savings.fields.progress}:
                                     </div>
                                     <span className="font-medium text-gray-900 dark:text-white">
                                         {goal.progress_percentage}%
@@ -248,20 +248,20 @@ export default function SavingsPage() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                                         <Calendar className="w-4 h-4 mr-2" />
-                                        Target Date:
+                                        {dictionary.savings.fields.targetDate}:
                                     </div>
                                     <span className="font-medium text-gray-900 dark:text-white">
-                                        {formatDate(goal.target_date)}
+                                        {formatDate(goal.target_date, lang)}
                                     </span>
                                 </div>
 
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center text-gray-600 dark:text-gray-400">
                                         <Clock className="w-4 h-4 mr-2" />
-                                        Started:
+                                        {dictionary.savings.fields.started}:
                                     </div>
                                     <span className="font-medium text-gray-900 dark:text-white">
-                                        {formatDate(goal.start_date)}
+                                        {formatDate(goal.start_date, lang)}
                                     </span>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@ export default function SavingsPage() {
                             <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                                 <div className="flex items-center text-gray-600 dark:text-gray-400">
                                     <CheckCircle2 className="w-4 h-4 mr-2" />
-                                    Account: {goal.account_name}
+                                    {dictionary.savings.fields.account}: {goal.account_name}
                                 </div>
                             </div>
 
@@ -287,7 +287,7 @@ export default function SavingsPage() {
                                              transition-colors flex items-center justify-center"
                                 >
                                     <Pencil className="w-4 h-4 mr-2" />
-                                    Edit
+                                    {dictionary.savings.actions.edit}
                                 </button>
 
                                 <button
@@ -300,7 +300,7 @@ export default function SavingsPage() {
                                              transition-colors flex items-center justify-center"
                                 >
                                     <Trash2 className="w-4 h-4 mr-2" />
-                                    Delete
+                                    {dictionary.savings.actions.delete}
                                 </button>
                             </div>
                         </div>

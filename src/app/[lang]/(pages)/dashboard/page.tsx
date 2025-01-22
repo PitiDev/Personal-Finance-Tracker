@@ -35,10 +35,10 @@ import {
 // Utility function for number formatting
 const formatAmount = (amount: string | number): string => {
     const num = typeof amount === 'string' ? parseFloat(amount) : amount;
-    return num.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
+    return new Intl.NumberFormat('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(num);
 };
 
 interface DashboardData {
