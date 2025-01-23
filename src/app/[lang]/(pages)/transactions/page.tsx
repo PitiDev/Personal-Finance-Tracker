@@ -1,131 +1,126 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import axios from 'axios';
-import { useAuthStore } from '@/store/authStore';
-import { ChevronLeft, ChevronRight, RefreshCw, LogOut, DollarSign } from 'lucide-react';
-import { toast } from 'sonner';
-import { getDictionary } from '../../../../../get-dictionary';
-import { Locale } from '../../../i18n-config';
-import { ThemeToggle } from '@/components/layout/ThemeToggle';
+import React, { useState, useEffect, useCallback } from 'react'
+import { useRouter, useParams } from 'next/navigation'
+import axios from 'axios'
+import { useAuthStore } from '@/store/authStore'
+import {
+    ChevronLeft,
+    ChevronRight,
+    RefreshCw,
+    LogOut,
+    DollarSign,
+    ArrowRightLeft
+} from 'lucide-react'
+import ModalTransaction from '@/components/ui/ModalTransaction'
+import { ThemeToggle } from '@/components/layout/ThemeToggle'
+import { getDictionary } from '../../../../../get-dictionary'
+import { Locale } from '../../../i18n-config'
 
 interface Transaction {
-    transaction_id: number;
-    user_id: number;
-    account_id: number;
-    category_id: number;
-    amount: string;
-    type: 'expense' | 'income';
-    description: string;
-    transaction_date: string;
-    created_at: string;
-    updated_at: string;
-    category_name: string;
-    category_type: string;
+    transaction_id: number
+    user_id: number
+    account_id: number
+    category_id: number
+    amount: string
+    type: 'expense' | 'income'
+    description: string
+    transaction_date: string
+    created_at: string
+    updated_at: string
+    category_name: string
+    category_type: string
 }
 
 interface PaginationInfo {
-    total: number;
-    page: number;
-    limit: number;
-    total_pages: number;
+    total: number
+    page: number
+    limit: number
+    total_pages: number
 }
 
-const API_URL = 'http://localhost:4000/api/transactions';
+const TransactionsPage = () => {
+    const router = useRouter()
+    const params = useParams()
+    const lang = params.lang as Locale
 
-export default function TransactionsPage() {
-    const router = useRouter();
-    const params = useParams();
-    const lang = params.lang as Locale;
-
-    const { user, token, logout } = useAuthStore();
-    const [dictionary, setDictionary] = useState<any>({});
-    const [isLoading, setIsLoading] = useState(true);
-    const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const { user, token, logout } = useAuthStore()
+    const [dictionary, setDictionary] = useState<any>({})
+    const [isLoading, setIsLoading] = useState(true)
+    const [isTransferModalOpen, setIsTransferModalOpen] = useState(false)
+    const [transactions, setTransactions] = useState<Transaction[]>([])
     const [pagination, setPagination] = useState<PaginationInfo>({
         total: 0,
         page: 1,
         limit: 10,
         total_pages: 1,
-    });
+    })
 
     const fetchTransactions = useCallback(async (page: number) => {
-        setIsLoading(true);
-        console.log('Fetching transactions for page:', page);
-        console.log('Using token:', token);
+        setIsLoading(true)
         try {
-            const response = await axios.get(API_URL, {
-                headers: { 'Authorization': `Bearer ${token}` },
+            const response = await axios.get('http://localhost:4000/api/transactions', {
+                headers: { Authorization: `Bearer ${token}` },
                 params: { page, limit: 10 },
-            });
+            })
 
-            console.log('API Response:', response.data);
-
-            const { transactions, pagination } = response.data.data;
-            setTransactions(transactions);
-            setPagination(pagination);
+            const { transactions, pagination } = response.data.data
+            setTransactions(transactions)
+            setPagination(pagination)
         } catch (error) {
-            console.error('Failed to fetch transactions', error);
-            if (axios.isAxiosError(error)) {
-                console.error('Axios Error Details:', {
-                    response: error.response?.data,
-                    status: error.response?.status,
-                    headers: error.response?.headers,
-                    request: error.request,
-                    message: error.message,
-                });
-            } else {
-                console.error('Unexpected Error:', error);
-            }
-            toast.error(dictionary.transactions?.fetchError || 'Failed to load transactions');
+            console.error('Failed to fetch transactions:', error)
         } finally {
-            setIsLoading(false);
+            setIsLoading(false)
         }
-    }, [token, dictionary]);
+    }, [token])
 
     useEffect(() => {
-        const initializeTransactionsPage = async () => {
+        const initializePage = async () => {
             try {
-                const dict = await getDictionary(lang);
-                setDictionary(dict);
+                const dict = await getDictionary(lang)
+                setDictionary(dict)
 
-                await new Promise(resolve => setTimeout(resolve, 100));
-                const { user, token } = useAuthStore.getState();
+                const { user, token } = useAuthStore.getState()
                 if (!user || !token) {
-                    router.push(`/${lang}/login`);
-                } else {
-                    fetchTransactions(1);
+                    router.push(`/${lang}/login`)
+                    return
                 }
+
+                fetchTransactions(1)
             } catch (error) {
-                console.error('Transactions page initialization failed:', error);
+                console.error('Page initialization failed:', error)
             }
-        };
+        }
 
-        initializeTransactionsPage();
-    }, [lang, router, fetchTransactions]);
+        initializePage()
+    }, [lang, router, fetchTransactions])
 
-    const handleRefresh = () => {
-        fetchTransactions(pagination.page);
-    };
+    const handleRefresh = () => fetchTransactions(pagination.page)
 
     const handlePageChange = (newPage: number) => {
         if (newPage > 0 && newPage <= pagination.total_pages) {
-            fetchTransactions(newPage);
+            fetchTransactions(newPage)
         }
-    };
+    }
 
     const handleLogout = () => {
-        logout();
-        router.push(`/${lang}/login`);
-    };
+        logout()
+        router.push(`/${lang}/login`)
+    }
 
     const formatDate = (dateString: string) => {
         return new Date(dateString).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
-        });
+        })
+    }
+
+    const formatAmount = (amount: string) => {
+        return new Intl.NumberFormat(lang, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(parseFloat(amount));
     };
 
     if (isLoading || !dictionary.transactions) {
@@ -133,7 +128,7 @@ export default function TransactionsPage() {
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800">
                 <RefreshCw className="w-8 h-8 animate-spin text-blue-500" />
             </div>
-        );
+        )
     }
 
     return (
@@ -168,12 +163,31 @@ export default function TransactionsPage() {
                         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                             {dictionary.transactions.recentTransactions}
                         </h2>
-                        <button
-                            onClick={handleRefresh}
-                            className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-                        >
-                            <RefreshCw className="w-5 h-5" />
-                        </button>
+                        <div className="flex items-center space-x-4">
+                            <button
+                                onClick={() => setIsTransferModalOpen(true)}
+                                className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                            >
+                                <ArrowRightLeft className="w-4 h-4 mr-2" />
+                                New Transaction
+                            </button>
+                            <button
+                                onClick={handleRefresh}
+                                className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                            >
+                                <RefreshCw className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        <ModalTransaction
+                            isOpen={isTransferModalOpen}
+                            onClose={() => setIsTransferModalOpen(false)}
+                            onSuccess={() => {
+                                handleRefresh()
+                                setIsTransferModalOpen(false)
+                            }}
+                            dictionary={dictionary}
+                        />
                     </div>
 
                     <div className="overflow-x-auto">
@@ -189,14 +203,21 @@ export default function TransactionsPage() {
                             </thead>
                             <tbody>
                                 {transactions.map((transaction) => (
-                                    <tr key={transaction.transaction_id} className="bg-white dark:bg-gray-800 border-b dark:border-gray-700">
+                                    <tr
+                                        key={transaction.transaction_id}
+                                        className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+                                    >
                                         <td className="px-6 py-4">{formatDate(transaction.transaction_date)}</td>
                                         <td className="px-6 py-4">{transaction.description}</td>
                                         <td className="px-6 py-4">{transaction.category_name}</td>
-                                        <td className="px-6 py-4">{parseFloat(transaction.amount).toFixed(2)}</td>
+                                        <td className="px-6 py-4 font-bold text-lg">{formatAmount(transaction.amount)}</td>
                                         <td className="px-6 py-4">
-                                            <span className={`px-2 py-1 rounded-full text-xs ${transaction.type === 'income' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
-                                                }`}>
+                                            <span
+                                                className={`px-2 py-1 rounded-full text-xs ${transaction.type === 'income'
+                                                    ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
+                                                    : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300'
+                                                    }`}
+                                            >
                                                 {transaction.type}
                                             </span>
                                         </td>
@@ -234,5 +255,7 @@ export default function TransactionsPage() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
+
+export default TransactionsPage

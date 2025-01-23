@@ -12,6 +12,11 @@
   "allFieldsRequired": "All fields are required",
   "passwordMinLength": "Password must be at least 6 characters long",
   "registrationFailed": "Registration failed. Please try again.",
+  
+  "about": {
+    "title": "About",
+    "description": "Personal Finance Tracker is a web application designed to help you manage your finances. It provides a comprehensive set of features to track your income, expenses, savings, and investments. With its intuitive interface and powerful analytics, you can easily monitor your financial health and make informed decisions about your finances."
+  },
   "dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome",
@@ -22,7 +27,14 @@
     "totalBalance": "Total Balance",
     "monthlyIncome": "Monthly Income",
     "monthlyExpenses": "Monthly Expenses",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "totalSavings": "Total Savings",
+    "income": "Income",
+    "netBalance": "Net Balance",
+    "expense": "Expenses",
+    "totalIncome": "Total Income",
+    "totalExpenses": "Total Expenses",
+    "financialBreakdown": "Financial Breakdown"
   },
   "sidebar": {
     "title": "Financial Manager",
@@ -35,7 +47,8 @@
       "account": "Account",
       "saving": "Saving",
       "loan": "Loan",
-      "transferAmount": "Transfer Amount"
+      "transferAmount": "Transfer Amount",
+      "about": "About"
     },
     "logout": "Logout"
   },
@@ -235,6 +248,7 @@
       "account": "Account"
     },
     "actions": {
+      "contribute": "Contribute",
       "edit": "Edit",
       "delete": "Delete",
       "logout": "Logout"
@@ -243,6 +257,62 @@
       "deleteSuccess": "Savings goal deleted successfully",
       "deleteError": "Failed to delete savings goal",
       "fetchError": "Failed to fetch savings goals"
+    }
+  },
+  "loans": {
+    "title": "Loans",
+    "actions": {
+      "add": "Add New Loan",
+      "edit": "Edit",
+      "delete": "Delete",
+      "logout": "Logout",
+      "back": "Back to Loans"
+    },
+    "status": {
+      "active": "Active",
+      "completed": "Completed",
+      "pending": "Pending",
+      "overdue": "Overdue"
+    },
+    "fields": {
+      "title": "Title",
+      "totalAmount": "Total Amount",
+      "remainingAmount": "Remaining Amount",
+      "interestRate": "Interest Rate",
+      "loanType": "Loan Type",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "borrower": "Borrower",
+      "borrowerName": "Borrower Name",
+      "contact": "Contact",
+      "description": "Description",
+      "account": "Account",
+      "period": "Period",
+      "lastUpdated": "Last Updated",
+      "progress": "Progress",
+      "paymentHistory": "Payment History",
+      "date": "Date",
+      "amount": "Amount",
+      "type": "Type"
+    },
+    "types": {
+      "borrowed": "Borrowed",
+      "lent": "Lent"
+    },
+    "emptyState": {
+      "title": "No Loans Found",
+      "description": "You currently don't have any active loans."
+    },
+    "errors": {
+      "fetchFailed": "Failed to fetch loans",
+      "generic": "An error occurred"
+    },
+    "payment": {
+      "title": "Make a Payment",
+      "amount": "Amount",
+      "description": "Description",
+      "submit": "Submit Payment",
+      "submitting": "Submitting..."
     }
   }
 }

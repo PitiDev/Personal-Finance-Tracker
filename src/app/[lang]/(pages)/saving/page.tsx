@@ -15,11 +15,13 @@ import {
     CheckCircle2,
     Clock,
     Pencil,
-    Trash2
+    Trash2,
+    Coins
 } from 'lucide-react';
 import { getDictionary } from '../../../../../get-dictionary';
 import { Locale } from '../../../i18n-config';
 import AddSavingsModal from '@/components/ui/ModalAddSaving';
+import ContributeSavingsModal from '@/components/ui/ContributeSavingsModal';
 
 interface SavingsGoal {
     goal_id: number;
@@ -34,6 +36,15 @@ interface SavingsGoal {
     account_name: string;
     progress_percentage: string;
 }
+
+interface ContributeModalState {
+    isOpen: boolean;
+    goalId: number | null;
+    currentAmount: string;
+    targetAmount: string;
+    goalTitle: string;
+}
+
 
 interface ModalState {
     isOpen: boolean;
@@ -55,6 +66,15 @@ export default function SavingsPage() {
         isOpen: false,
         mode: 'create'
     });
+
+    const [contributeModal, setContributeModal] = useState<ContributeModalState>({
+        isOpen: false,
+        goalId: null,
+        currentAmount: '0',
+        targetAmount: '0',
+        goalTitle: ''
+    });
+
 
     const initializePage = async () => {
         try {
@@ -276,6 +296,20 @@ export default function SavingsPage() {
                             {/* Action Buttons */}
                             <div className="mt-4 flex space-x-2">
                                 <button
+                                    onClick={() => setContributeModal({
+                                        isOpen: true,
+                                        goalId: goal.goal_id,
+                                        currentAmount: goal.current_amount,
+                                        targetAmount: goal.target_amount,
+                                        goalTitle: goal.title
+                                    })}
+                                    className="flex-1 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 
+                 transition-colors flex items-center justify-center"
+                                >
+                                    <Coins className="w-4 h-4 mr-2" />
+                                    {dictionary.savings.actions.contribute}
+                                </button>
+                                <button
                                     onClick={() => {
                                         setModalState({
                                             isOpen: true,
@@ -328,6 +362,18 @@ export default function SavingsPage() {
                     </div>
                 )}
             </div>
+
+            <ContributeSavingsModal
+                isOpen={contributeModal.isOpen}
+                onClose={() => setContributeModal(prev => ({ ...prev, isOpen: false }))}
+                onSuccess={initializePage}
+                goalId={contributeModal.goalId!}
+                token={token!}
+                currentAmount={contributeModal.currentAmount}
+                targetAmount={contributeModal.targetAmount}
+                goalTitle={contributeModal.goalTitle}
+            />
+
         </div>
     );
 }

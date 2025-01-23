@@ -16,7 +16,8 @@ import {
     Menu,
     ChevronLeft,
     Sun,
-    Moon
+    Moon,
+    Info
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useAuthStore } from '@/store/authStore'
@@ -75,6 +76,11 @@ const menuItems = [
         key: "userManagement",
         icon: Users,
         href: "/users"
+    },
+    {
+        key: "about",
+        icon: Info,
+        href: "/about"
     },
 ]
 

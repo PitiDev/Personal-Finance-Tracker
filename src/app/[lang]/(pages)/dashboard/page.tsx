@@ -279,6 +279,22 @@ export default function DashboardPage() {
         router.push(`/${lang}/login`);
     };
 
+    const calculateProgressPercentages = () => {
+        const income = parseFloat(data?.income_expense_summary.find(item => item.type === 'income')?.total_amount || '0');
+        const expense = parseFloat(data?.income_expense_summary.find(item => item.type === 'expense')?.total_amount || '0');
+        const savedAmount = parseFloat(data?.savings_goal_summary.total_saved || '0');
+
+        const netBalance = savedAmount + (income - expense);
+        const total = income + expense + Math.abs(netBalance);
+
+        return {
+            incomePercent: total > 0 ? (income / total) * 100 : 0,
+            expensePercent: total > 0 ? (expense / total) * 100 : 0,
+            balancePercent: total > 0 ? (Math.abs(netBalance) / total) * 100 : 0,
+            netBalance: netBalance
+        };
+    };
+
     if (isLoading || !dictionary.dashboard || dataLoading) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800">
@@ -308,6 +324,8 @@ export default function DashboardPage() {
         total_expense: parseFloat(item.total_expense)
     }));
 
+    const { incomePercent, expensePercent, balancePercent, netBalance } = calculateProgressPercentages();
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
             <div className="container mx-auto px-4 py-8">
@@ -334,12 +352,12 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <DashboardWidget
-                        title={dictionary.dashboard.totalBalance}
+                    {/* <DashboardWidget
+                        title={dictionary.dashboard.totalSavings}
                         value={`${formatAmount(data?.savings_goal_summary.total_saved || '0')}`}
                         color="green"
                         icon={<PiggyBank className="w-6 h-6" />}
-                    />
+                    /> */}
                     <DashboardWidget
                         title={dictionary.dashboard.monthlyIncome}
                         value={`${formatAmount(income?.total_amount || '0')}`}
@@ -347,11 +365,94 @@ export default function DashboardPage() {
                         icon={<TrendingUp className="w-6 h-6" />}
                     />
                     <DashboardWidget
+                        title={dictionary.dashboard.netBalance}
+                        value={`${formatAmount(
+                            parseFloat(data?.savings_goal_summary.total_saved || '0') +
+                            (parseFloat(income?.total_amount || '0') - parseFloat(expense?.total_amount || '0'))
+                        )}`}
+                        color="green"
+                        icon={<Banknote className="w-6 h-6" />}
+                    />
+                    <DashboardWidget
                         title={dictionary.dashboard.monthlyExpenses}
                         value={`${formatAmount(expense?.total_amount || '0')}`}
                         color="red"
                         icon={<TrendingDown className="w-6 h-6" />}
                     />
+                </div>
+
+
+                <div className="mb-6">
+                    <div className="bg-white/80 dark:bg-gray-800/80 shadow-lg rounded-lg p-6 backdrop-blur-sm">
+                        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+                            {dictionary.dashboard.financialBreakdown}
+                        </h2>
+                        <div className="w-full h-6 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden flex">
+                            {(() => {
+                                return (
+                                    <>
+                                        <div
+                                            className="bg-blue-500 h-full"
+                                            style={{ width: `${incomePercent}%` }}
+                                            title={`Income: ${incomePercent.toFixed(2)}%`}
+                                        />
+                                        <div
+                                            className={`h-full ${netBalance >= 0 ? 'bg-green-500' : 'bg-red-500'}`}
+                                            style={{ width: `${balancePercent}%` }}
+                                            title={`Net Balance: ${balancePercent.toFixed(2)}%`}
+                                        />
+                                        <div
+                                            className="bg-red-500 h-full"
+                                            style={{ width: `${expensePercent}%` }}
+                                            title={`Expenses: ${expensePercent.toFixed(2)}%`}
+                                        />
+                                    </>
+                                );
+                            })()}
+                        </div>
+                        <div className="flex justify-between mt-2 text-sm text-gray-600 dark:text-gray-300">
+                            <div className="flex items-center">
+                                <span className="inline-block w-3 h-3 mr-2 bg-blue-500 rounded-full" />
+                                {dictionary.dashboard.income}
+                            </div>
+                            <div className="flex items-center">
+                                <span className={`inline-block w-3 h-3 mr-2 rounded-full ${netBalance >= 0 ? 'bg-green-500' : 'bg-red-500'}`} />
+                                {dictionary.dashboard.netBalance}
+                            </div>
+                            <div className="flex items-center">
+                                <span className="inline-block w-3 h-3 mr-2 bg-red-500 rounded-full" />
+                                {dictionary.dashboard.expense}
+                            </div>
+                        </div>
+
+                        {/* <div className="grid grid-cols-3 gap-4 mt-4 text-center">
+                            <div>
+                                <p className="text-blue-600 dark:text-blue-400 font-bold">
+                                    ${formatAmount(data?.income_expense_summary.find(item => item.type === 'income')?.total_amount || '0')}
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                    {dictionary.dashboard.totalIncome}
+                                </p>
+                            </div>
+                            <div>
+                                <p className={`font-bold ${netBalance >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                                    ${formatAmount(Math.abs(netBalance))}
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                    {netBalance >= 0 ? 'Net Surplus' : 'Net Deficit'}
+                                </p>
+                            </div>
+                            <div>
+                                <p className="text-red-600 dark:text-red-400 font-bold">
+                                    ${formatAmount(data?.income_expense_summary.find(item => item.type === 'expense')?.total_amount || '0')}
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                    {dictionary.dashboard.totalExpenses}
+                                </p>
+                            </div>
+                        </div> */}
+
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -392,7 +493,7 @@ export default function DashboardPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <DashboardWidget
                         title="Budget Overview"
-                        value={`$${formatAmount(data?.budget_overview.total_budgeted || '0')}`}
+                        value={`${formatAmount(data?.budget_overview.total_budgeted || '0')}`}
                         color="blue"
                         icon={<LineChartIcon className="w-6 h-6" />}
                     />

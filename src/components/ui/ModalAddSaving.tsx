@@ -123,7 +123,8 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
 
     if (showDeleteConfirm) {
         return (
-            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 
+        transition-opacity duration-300 ease-in-out">
                 <div className="bg-white dark:bg-gray-800 rounded-lg w-full max-w-md shadow-xl p-6">
                     <div className="flex items-center mb-4 text-red-500">
                         <AlertTriangle className="w-6 h-6 mr-2" />
