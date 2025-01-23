@@ -4,6 +4,7 @@ export type Dictionary = {
   createAccount: string
   username: string
   email: string
+  mainCurrency: string
   password: string
   login: string
   register: string

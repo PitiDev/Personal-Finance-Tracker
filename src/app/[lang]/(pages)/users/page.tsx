@@ -13,7 +13,9 @@ import {
     BarChart2,
     Tag,
     Calendar,
-    Lock
+    Lock,
+    Check,
+    AlertCircle
 } from 'lucide-react';
 import { getDictionary } from '../../../../../get-dictionary';
 import { Locale } from '../../../i18n-config';
@@ -23,9 +25,15 @@ interface UserProfile {
     user_id: number;
     username: string;
     email: string;
+    main_currency: string;
     created_at: string;
     transaction_count: number;
     custom_category_count: number;
+}
+
+interface AlertMessage {
+    type: 'success' | 'error';
+    message: string;
 }
 
 export default function ProfilePage() {
@@ -37,24 +45,23 @@ export default function ProfilePage() {
     const [isLoading, setIsLoading] = useState(true);
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [error, setError] = useState<string | null>(null);
-
+    const [selectedCurrency, setSelectedCurrency] = useState<string>('');
+    const [alert, setAlert] = useState<AlertMessage | null>(null);
     const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
 
     useEffect(() => {
         const initializePage = async () => {
             try {
-                // Load dictionary
                 const dict = await getDictionary(lang);
                 setDictionary(dict);
 
-                // Check authentication
                 const { user, token } = useAuthStore.getState();
                 if (!user || !token) {
                     router.push(`/${lang}/login`);
                     return;
                 }
 
-                // Fetch profile data
                 const response = await fetch('http://localhost:4000/api/users/profile', {
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -67,6 +74,7 @@ export default function ProfilePage() {
 
                 const data = await response.json();
                 setProfile(data.data);
+                setSelectedCurrency(data.data.main_currency || '');
             } catch (error) {
                 console.error('Profile initialization failed:', error);
                 setError(error instanceof Error ? error.message : 'An error occurred');
@@ -77,6 +85,49 @@ export default function ProfilePage() {
 
         initializePage();
     }, [lang, router]);
+
+    const handleCurrencyChange = async (newCurrency: string) => {
+        try {
+            setIsUpdating(true);
+            const response = await fetch('http://localhost:4000/api/users/profile', {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    main_currency: newCurrency,
+                    username: profile?.username,
+                    email: profile?.email
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to update currency');
+            }
+
+            setSelectedCurrency(newCurrency);
+            if (profile) {
+                setProfile({ ...profile, main_currency: newCurrency });
+            }
+
+            setAlert({
+                type: 'success',
+                message: 'Currency updated successfully'
+            });
+
+            // Auto-hide alert after 3 seconds
+            setTimeout(() => setAlert(null), 3000);
+        } catch (error) {
+            console.error('Error updating currency:', error);
+            setAlert({
+                type: 'error',
+                message: 'Failed to update currency'
+            });
+        } finally {
+            setIsUpdating(false);
+        }
+    };
 
     const handleLogout = () => {
         logout();
@@ -123,13 +174,7 @@ export default function ProfilePage() {
                     </div>
                     <div className="flex items-center space-x-4">
                         <ThemeToggle />
-                        <button
-                            onClick={handleLogout}
-                            className="flex items-center px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-                        >
-                            <LogOut className="w-4 h-4 mr-2" />
-                            Logout
-                        </button>
+
                     </div>
                 </div>
 
@@ -141,7 +186,7 @@ export default function ProfilePage() {
                                 <User className="w-5 h-5 mr-2" />
                                 Basic Information
                             </h2>
-                            
+
                             <div className="space-y-4">
                                 <div>
                                     <label className="text-sm text-gray-500 dark:text-gray-400">Username</label>
@@ -149,7 +194,7 @@ export default function ProfilePage() {
                                         {profile.username}
                                     </div>
                                 </div>
-                                
+
                                 <div>
                                     <label className="text-sm text-gray-500 dark:text-gray-400">Email</label>
                                     <div className="text-lg font-medium text-gray-900 dark:text-white flex items-center">
@@ -164,6 +209,32 @@ export default function ProfilePage() {
                                         <Calendar className="w-4 h-4 mr-2 text-gray-500" />
                                         {formatDate(profile.created_at)}
                                     </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                        Currency
+                                    </label>
+                                    <select
+                                        value={selectedCurrency}
+                                        onChange={(e) => handleCurrencyChange(e.target.value)}
+                                        disabled={isUpdating}
+                                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+                         bg-white dark:bg-gray-700 text-gray-900 dark:text-white
+                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    >
+                                        <option value="" disabled>Select main currency</option>
+                                        <option value="LAK">LAK</option>
+                                        <option value="THB">THB</option>
+                                        <option value="USD">USD</option>
+                                        <option value="JPY">JPY</option>
+                                    </select>
+                                    {isUpdating && (
+                                        <div className="mt-2 text-sm text-gray-500 dark:text-gray-400 flex items-center">
+                                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                            Updating currency...
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
@@ -185,7 +256,7 @@ export default function ProfilePage() {
                                 <BarChart2 className="w-5 h-5 mr-2" />
                                 Account Statistics
                             </h2>
-                            
+
                             <div className="grid grid-cols-1 gap-6">
                                 <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
                                     <div className="flex items-center justify-between">
@@ -223,7 +294,7 @@ export default function ProfilePage() {
                     </div>
                 )}
             </div>
-            <ChangePasswordModal 
+            <ChangePasswordModal
                 isOpen={isChangePasswordModalOpen}
                 onClose={() => setIsChangePasswordModalOpen(false)}
                 onSuccess={() => {

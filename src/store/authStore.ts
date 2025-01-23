@@ -8,6 +8,7 @@ const API_BASE_URL = config.apiBaseUrl
 interface User {
     id: number
     username: string
+    main_currency: string
     email: string
 }
 
@@ -15,7 +16,7 @@ interface AuthState {
     user: User | null
     token: string | null
     login: (email: string, password: string) => Promise<void>
-    register: (username: string, email: string, password: string) => Promise<void>
+    register: (username: string, email: string, main_currency: string, password: string) => Promise<void>
     logout: () => void
 }
 
@@ -42,9 +43,9 @@ const createAuthStore = (set: any) => ({
             throw error
         }
     },
-    register: async (username: string, email: string, password: string) => {
+    register: async (username: string, email: string, main_currency: string, password: string) => {
         try {
-            const response = await apiClient.post('/users/register', { username, email, password })
+            const response = await apiClient.post('/users/register', { username, email, main_currency, password })
             const { status, message, data } = response.data
             if (status === 'success') {
                 // Assuming the API also returns user data and token on successful registration

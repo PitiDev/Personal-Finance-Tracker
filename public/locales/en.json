@@ -12,6 +12,8 @@
   "allFieldsRequired": "All fields are required",
   "passwordMinLength": "Password must be at least 6 characters long",
   "registrationFailed": "Registration failed. Please try again.",
+  "currency": "Currency",
+  "mainCurrency": "Main Currency",
   
   "about": {
     "title": "About",
@@ -40,7 +42,7 @@
     "title": "Financial Manager",
     "menu": {
       "dashboard": "Dashboard",
-      "userManagement": "User Management",
+      "profile": "Profile",
       "categories": "Categories",
       "transactions": "Transactions",
       "budgets": "Budgets",
@@ -277,6 +279,7 @@
     "fields": {
       "title": "Title",
       "totalAmount": "Total Amount",
+      "currency":"Currency",
       "remainingAmount": "Remaining Amount",
       "interestRate": "Interest Rate",
       "loanType": "Loan Type",

@@ -27,6 +27,7 @@ interface Loan {
     account_id: number;
     title: string;
     total_amount: string;
+    currency: string;
     remaining_amount: string;
     interest_rate: string;
     loan_type: string;
@@ -210,7 +211,7 @@ export default function LoanPage() {
                                         {dictionary.loans?.fields.totalAmount}
                                     </p>
                                     <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                                        {formatAmount(loan.total_amount)}
+                                        {loan.currency}  {formatAmount(loan.total_amount)}
                                     </p>
                                 </div>
                                 <div>
@@ -218,7 +219,7 @@ export default function LoanPage() {
                                         {dictionary.loans?.fields.remainingAmount}
                                     </p>
                                     <p className="text-lg font-semibold text-gray-900 dark:text-white">
-                                        {formatAmount(loan.remaining_amount)}
+                                        {loan.currency} {formatAmount(loan.remaining_amount)}
                                     </p>
                                 </div>
                             </div>

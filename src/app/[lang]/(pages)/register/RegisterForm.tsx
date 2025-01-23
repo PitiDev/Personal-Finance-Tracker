@@ -12,6 +12,8 @@ import { Loader2, UserPlus, Mail, Lock, User } from 'lucide-react'
 export default function RegisterForm({ dictionary, lang }: { dictionary: Dictionary; lang: Locale }) {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
+    const [selectedCurrency, setSelectedCurrency] = useState('')
+    const [currencies, setCurrencies] = useState([])
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [successMessage, setSuccessMessage] = useState('')
@@ -40,7 +42,7 @@ export default function RegisterForm({ dictionary, lang }: { dictionary: Diction
 
         setIsLoading(true)
         try {
-            await register(username, email, password)
+            await register(username, email, selectedCurrency, password)
             setSuccessMessage('Registration successful')
             setTimeout(() => {
                 router.push('/dashboard')
@@ -130,6 +132,26 @@ export default function RegisterForm({ dictionary, lang }: { dictionary: Diction
                                 disabled={isLoading}
                             />
                         </div>
+                    </div>
+
+                    <div className="mb-4 relative">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            {dictionary.mainCurrency}
+                        </label>
+                        <select
+                            value={selectedCurrency}
+                            onChange={(e) => setSelectedCurrency(e.target.value)}
+                            required
+                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+                         bg-white dark:bg-gray-700 text-gray-900 dark:text-white
+                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                            <option value="" disabled> {dictionary.mainCurrency}</option>
+                            <option value="LAK">LAK</option>
+                            <option value="THB">THB</option>
+                            <option value="USD">USD</option>
+                            <option value="JPY">JPY</option>
+                        </select>
                     </div>
 
                     <div className="mb-6 relative">

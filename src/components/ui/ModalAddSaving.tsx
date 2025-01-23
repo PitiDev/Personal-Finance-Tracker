@@ -7,6 +7,7 @@ interface SavingsGoal {
     goal_id?: number;
     account_id: number;
     title: string;
+    currency: string;
     target_amount: string | number;
     target_date: string;
     description: string;
@@ -23,6 +24,7 @@ interface SavingsModalProps {
 interface SavingsFormData {
     account_id: number;
     title: string;
+    currency: string;
     target_amount: number;
     target_date: string;
     description: string;
@@ -44,6 +46,7 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
         defaultValues: {
             account_id: 1,
             title: '',
+            currency: '',
             target_amount: 0,
             target_date: '',
             description: ''
@@ -53,6 +56,7 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
     useEffect(() => {
         if (goal && mode === 'edit') {
             setValue('title', goal.title);
+            setValue('currency', goal.currency);
             setValue('target_amount', Number(goal.target_amount));
             setValue('target_date', goal.target_date.split('T')[0]);
             setValue('description', goal.description);
@@ -62,7 +66,7 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
 
     const handleDelete = async () => {
         if (!goal?.goal_id) return;
-        
+
         setIsSubmitting(true);
         setError(null);
 
@@ -91,7 +95,7 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
         setIsSubmitting(true);
         setError(null);
 
-        const url = mode === 'create' 
+        const url = mode === 'create'
             ? 'http://localhost:4000/api/savings-goals'
             : `http://localhost:4000/api/savings-goals/${goal?.goal_id}`;
 
@@ -130,7 +134,7 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
                         <AlertTriangle className="w-6 h-6 mr-2" />
                         <h2 className="text-xl font-semibold">Confirm Deletion</h2>
                     </div>
-                    
+
                     <p className="text-gray-600 dark:text-gray-300 mb-6">
                         Are you sure you want to delete this savings goal? This action cannot be undone.
                     </p>
@@ -194,12 +198,37 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Currency
+                        </label>
+                        <select
+                            {...register('currency', { required: 'Currency is required' })}
+                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md 
+                                     focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                            defaultValue=""
+                        >
+                            <option value="" disabled>Select currency</option>
+                            <option value="LAK">LAK</option>
+                            <option value="THB">THB</option>
+                            <option value="USD">USD</option>
+                            <option value="USD">YEN</option>
+                        </select>
+                        {errors.currency && (
+                            <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                                {errors.currency.message}
+                            </p>
+                        )}
+
+
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Target Amount
                         </label>
                         <input
                             type="number"
                             step="0.01"
-                            {...register('target_amount', { 
+                            {...register('target_amount', {
                                 required: 'Target amount is required',
                                 min: { value: 0.01, message: 'Amount must be greater than 0' }
                             })}

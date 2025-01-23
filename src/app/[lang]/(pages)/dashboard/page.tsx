@@ -360,13 +360,13 @@ export default function DashboardPage() {
                     /> */}
                     <DashboardWidget
                         title={dictionary.dashboard.monthlyIncome}
-                        value={`${formatAmount(income?.total_amount || '0')}`}
+                        value={`${user?.main_currency} ${formatAmount(income?.total_amount || '0')}`}
                         color="blue"
                         icon={<TrendingUp className="w-6 h-6" />}
                     />
                     <DashboardWidget
                         title={dictionary.dashboard.netBalance}
-                        value={`${formatAmount(
+                        value={`${user?.main_currency} ${formatAmount(
                             parseFloat(data?.savings_goal_summary.total_saved || '0') +
                             (parseFloat(income?.total_amount || '0') - parseFloat(expense?.total_amount || '0'))
                         )}`}
@@ -375,7 +375,7 @@ export default function DashboardPage() {
                     />
                     <DashboardWidget
                         title={dictionary.dashboard.monthlyExpenses}
-                        value={`${formatAmount(expense?.total_amount || '0')}`}
+                        value={`${user?.main_currency} ${formatAmount(expense?.total_amount || '0')}`}
                         color="red"
                         icon={<TrendingDown className="w-6 h-6" />}
                     />

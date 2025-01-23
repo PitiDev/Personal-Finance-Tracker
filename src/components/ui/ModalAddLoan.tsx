@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Loader2, Plus } from 'lucide-react';
 import { Locale } from '@/app/i18n-config';
+import { useAuthStore } from '@/store/authStore'
+import axios from 'axios';
 
 interface AddLoanModalProps {
     isOpen: boolean;
@@ -9,6 +11,14 @@ interface AddLoanModalProps {
     onSuccess: () => void;
     token: string;
     dictionary: any;
+}
+
+interface Account {
+    account_id: number
+    account_name: string
+    account_type: string
+    currency: string
+    balance: number
 }
 
 const AddLoanModal = ({
@@ -22,6 +32,7 @@ const AddLoanModal = ({
         account_id: '',
         title: '',
         total_amount: '',
+        currency: '',
         interest_rate: '',
         loan_type: 'borrowed',
         start_date: '',
@@ -33,6 +44,7 @@ const AddLoanModal = ({
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const [accounts, setAccounts] = useState<Account[]>([])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -65,6 +77,7 @@ const AddLoanModal = ({
                 account_id: '',
                 title: '',
                 total_amount: '',
+                currency: '',
                 interest_rate: '',
                 loan_type: 'borrowed',
                 start_date: '',
@@ -79,6 +92,25 @@ const AddLoanModal = ({
             setIsLoading(false);
         }
     };
+
+    // Fetch user accounts
+    useEffect(() => {
+        const fetchAccounts = async () => {
+            try {
+                const response = await axios.get('http://localhost:4000/api/accounts', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                })
+                setAccounts(response.data.data)
+            } catch (error) {
+                console.error('Failed to fetch accounts', error)
+
+            }
+        }
+
+        if (token) {
+            fetchAccounts()
+        }
+    }, [token])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -107,7 +139,7 @@ const AddLoanModal = ({
                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                 {dictionary.loans.fields.account}
                             </label>
-                            <input
+                            {/* <input
                                 type="number"
                                 name="account_id"
                                 value={formData.account_id}
@@ -116,7 +148,22 @@ const AddLoanModal = ({
                          bg-white dark:bg-gray-700 text-gray-900 dark:text-white
                          focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 required
-                            />
+                            /> */}
+                            <select
+                                id="from_account_id"
+                                name="account_id"
+                                value={formData.account_id}
+                                onChange={handleChange}
+                                className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                                required
+                            >
+                                <option value="">Select Account</option>
+                                {accounts.map(account => (
+                                    <option key={account.account_id} value={account.account_id}>
+                                        {account.account_name} - {account.currency}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
 
                         <div>
@@ -151,6 +198,25 @@ const AddLoanModal = ({
                          focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 required
                             />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                {dictionary.loans.fields.currency}
+                            </label>
+                            <select
+                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+                         bg-white dark:bg-gray-700 text-gray-900 dark:text-white
+                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                name="currency"
+                                defaultValue={formData.currency}
+                                onChange={handleChange}
+                            >
+                                <option value="" disabled>Select currency</option>
+                                <option value="LAK">LAK</option>
+                                <option value="THB">THB</option>
+                                <option value="USD">USD</option>
+                                <option value="USD">YEN</option>
+                            </select>
                         </div>
 
                         <div>

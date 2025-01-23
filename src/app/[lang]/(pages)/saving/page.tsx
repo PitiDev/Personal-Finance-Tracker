@@ -27,6 +27,7 @@ interface SavingsGoal {
     goal_id: number;
     account_id: number;
     title: string;
+    currency: string;
     target_amount: string;
     current_amount: string;
     start_date: string;
@@ -234,7 +235,7 @@ export default function SavingsPage() {
                                         {dictionary.savings.fields.target}:
                                     </div>
                                     <span className="font-medium text-gray-900 dark:text-white">
-                                        {formatAmount(goal.target_amount)}
+                                        {goal.currency}  {formatAmount(goal.target_amount)}
                                     </span>
                                 </div>
 

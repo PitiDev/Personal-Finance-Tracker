@@ -36,7 +36,11 @@ const menuItems = [
         icon: PieChart,
         href: "/dashboard"
     },
-
+    {
+        key: "account",
+        icon: Wallet,
+        href: "/account"
+    },
     {
         key: "categories",
         icon: FolderTree,
@@ -52,11 +56,7 @@ const menuItems = [
         icon: PieChart,
         href: "/budgets"
     },
-    {
-        key: "account",
-        icon: Wallet,
-        href: "/account"
-    },
+
     {
         key: "saving",
         icon: PiggyBank,
@@ -73,7 +73,7 @@ const menuItems = [
         href: "/transfer"
     },
     {
-        key: "userManagement",
+        key: "profile",
         icon: Users,
         href: "/users"
     },
