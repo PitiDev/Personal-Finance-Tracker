@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuthStore } from '@/store/authStore'
 import axios from 'axios'
+
 import {
   DollarSign,
   RefreshCw,
@@ -142,7 +143,6 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-          <DollarSign className="h-5 w-5" />
           {dictionary.transactions?.newTransaction || 'New Transaction'}
         </h2>
       </div>
@@ -175,7 +175,7 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Type
+              {dictionary.transactions?.type || 'Type'}
             </label>
             <select
               name="type"
@@ -184,14 +184,14 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
               className="w-full px-3 py-2 border rounded-lg bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500"
               required
             >
-              <option value="expense">Expense</option>
-              <option value="income">Income</option>
+              <option value="expense">{dictionary.transactions?.expense || 'Expense'}</option>
+              <option value="income">{dictionary.transactions?.income || 'Income'}</option>
             </select>
           </div>
 
           <div className="space-y-2">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Date
+              {dictionary.transactions?.date || 'Date'}
             </label>
             <input
               type="date"
@@ -226,7 +226,7 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
 
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-            Category
+            {dictionary.transactions?.category || 'Category'}
           </label>
           <select
             name="category_id"
@@ -246,7 +246,7 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
 
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-            Amount
+            {dictionary.transactions?.amount || 'Amount'}
           </label>
           <input
             type="number"
@@ -263,7 +263,7 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
 
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-            Description
+            {dictionary.transactions?.description || 'Description'}
           </label>
           <input
             type="text"

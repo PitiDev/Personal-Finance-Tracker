@@ -59,6 +59,23 @@ const config: Config = {
           th: ['Noto Sans Thai', 'sans-serif'],
         },
       },
+      
+      animation: {
+        'float': 'float 10s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': {
+            transform: 'translateY(0px)',
+            opacity: '0.4',
+          },
+          '50%': {
+            transform: 'translateY(20px)',
+            opacity: '0.7',
+          },
+        },
+      },
+
     },
     screens: {
       'xs': '375px',

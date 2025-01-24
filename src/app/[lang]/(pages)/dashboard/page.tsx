@@ -111,7 +111,7 @@ const useDashboardData = (token: string) => {
 };
 
 // Custom colors for pie chart
-const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#6366F1', '#8B5CF6', '#EC4899', '#14B8A6']
+const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#6366F1', '#8B5CF6', '#EC4899', '#14B8A6', '#F87171', '#FBBF24']
 
 // Custom Tooltip Component
 const CustomTooltip = ({ active, payload }: any) => {
@@ -162,8 +162,8 @@ const SpendingPieChart = ({ data }: { data: any[] }) => {
                             data={data}
                             cx="50%"
                             cy="50%"
-                            innerRadius={60}
-                            outerRadius={80}
+                            innerRadius={70}
+                            outerRadius={130}
                             fill="#8884d8"
                             paddingAngle={5}
                             dataKey="value"

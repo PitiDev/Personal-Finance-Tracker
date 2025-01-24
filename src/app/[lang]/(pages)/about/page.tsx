@@ -19,8 +19,15 @@ import {
     Link
 } from 'lucide-react'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export default function AboutPage() {
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+
+    
     const technologies = [
         {
             icon: <Code className="w-6 h-6 text-blue-500" />,

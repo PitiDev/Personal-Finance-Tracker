@@ -190,7 +190,10 @@
     "description": "Description",
     "category": "Category",
     "amount": "Amount",
-    "type": "Type"
+    "type": "Type",
+    "newTransaction": "New Transaction",
+    "income": "Income",
+    "expense": "Expense"
   },
   "categories": {
     "title": "Categories",
@@ -277,7 +280,7 @@
     "fields": {
       "title": "タイトル",
       "totalAmount": "総額",
-      "currency":"通貨",
+      "currency": "通貨",
       "remainingAmount": "残額",
       "interestRate": "金利",
       "loanType": "ローン種別",
@@ -318,4 +321,3 @@
     }
   }
 }
-

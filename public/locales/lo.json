@@ -190,7 +190,10 @@
     "description": "ຄຳອະທິບາຍ",
     "category": "ປະເພດ",
     "amount": "ຈຳນວນ",
-    "type": "ປະເພດ"
+    "type": "ປະເພດ",
+    "newTransaction": "ທຸລະກຳໃໝ່",
+    "income": "ລາຍຮັບ",
+    "expense": "ລາຍຈ່າຍ"
   },
   "categories": {
     "title": "ໝວດໝູ່",
@@ -278,7 +281,7 @@
     "fields": {
       "title": "ຫົວຂໍ້",
       "totalAmount": "ຈຳນວນທັງໝົດ",
-      "currency":"ສະກຸນເງິນ",
+      "currency": "ສະກຸນເງິນ",
       "remainingAmount": "ຈຳນວນທີ່ເຫຼືອ",
       "interestRate": "ອັດຕາດອກເບ້ຍ",
       "loanType": "ປະເພດເງິນກູ້",

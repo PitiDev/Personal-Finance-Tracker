@@ -14,7 +14,6 @@
   "registrationFailed": "Registration failed. Please try again.",
   "currency": "Currency",
   "mainCurrency": "Main Currency",
-  
   "about": {
     "title": "About",
     "description": "Personal Finance Tracker is a web application designed to help you manage your finances. It provides a comprehensive set of features to track your income, expenses, savings, and investments. With its intuitive interface and powerful analytics, you can easily monitor your financial health and make informed decisions about your finances."
@@ -191,7 +190,10 @@
     "description": "Description",
     "category": "Category",
     "amount": "Amount",
-    "type": "Type"
+    "type": "Type",
+    "newTransaction": "New Transaction",
+    "income": "Income",
+    "expense": "Expense"
   },
   "categories": {
     "title": "Categories",
@@ -279,7 +281,7 @@
     "fields": {
       "title": "Title",
       "totalAmount": "Total Amount",
-      "currency":"Currency",
+      "currency": "Currency",
       "remainingAmount": "Remaining Amount",
       "interestRate": "Interest Rate",
       "loanType": "Loan Type",

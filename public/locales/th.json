@@ -190,7 +190,10 @@
     "description": "คำอธิบาย",
     "category": "ประเภท",
     "amount": "จำนวน",
-    "type": "ประเภท"
+    "type": "ประเภท",
+    "newTransaction": "ธุรกรรมใหม่",
+    "income": "รายรับ",
+    "expense": "รายจ่าย"
   },
   "categories": {
     "title": "หมวดหมู่",
@@ -278,7 +281,7 @@
     "fields": {
       "title": "หัวข้อ",
       "totalAmount": "จำนวนเงินทั้งหมด",
-      "currency":"สกุลเงิน",
+      "currency": "สกุลเงิน",
       "remainingAmount": "จำนวนเงินคงเหลือ",
       "interestRate": "อัตราดอกเบี้ย",
       "loanType": "ประเภทเงินกู้",
