@@ -32,7 +32,7 @@ Personal Finance Tracker is a modern, full-stack web application built with Next
 ![Dashboard Overview](screenshots/dashboard.png)
 
 ### Dark Mode
-![Account Management](screenshots/accont.png)
+![Account Management](screenshots/account-management.png)
 
 ## 🚀 Getting Started
 
