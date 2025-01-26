@@ -35,7 +35,7 @@ const plans = {
     },
     premium: {
         name: 'Premium',
-        price: '4',
+        price: '1',
         billing: 'per month',
         description: 'Advanced features for comprehensive financial management',
         features: [

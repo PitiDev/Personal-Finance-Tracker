@@ -1,36 +1,171 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Finance Tracker 💰📊
 
-## Getting Started
+## Overview
+Personal Finance Tracker is a modern, full-stack web application built with Next.js that helps users manage their finances, track expenses, set budgets, and gain insights into their financial health.
 
-First, run the development server:
+## 🌟 Features
 
+### Dashboard
+- Real-time financial overview
+- Income and expense tracking
+- Spending category analysis
+- Monthly financial trends
+- Investment tracking
+- Savings goal monitoring
+
+### Key Technologies
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Zustand (State Management)
+- Recharts (Data Visualization)
+- NextAuth (Authentication)
+- Prisma (Database ORM)
+
+## 🖼️ Screenshots
+
+### Landing Page
+![Landing Page](screenshots/landing-page.png)
+
+### Dashboard
+![Dashboard Overview](screenshots/dashboard.png)
+
+### Dark Mode
+![Account Management](screenshots/accont.png)
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18.17+ recommended)
+- npm or yarn
+- PostgreSQL database
+
+### Installation Steps
+
+1. Clone the repository
+```bash
+git clone https://github.com/PitiDev/Personal-Finance-Tracker.git
+cd personal-finance-tracker
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables
+Create a `.env` file in the root directory and add:
+```
+DATABASE_URL="your_postgresql_connection_string"
+NEXTAUTH_SECRET="your_nextauth_secret"
+```
+
+4. Run database migrations
+```bash
+npx prisma migrate dev
+```
+
+5. Start the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The app supports multiple authentication methods:
+- Email/Password login
+- Social login (Google, GitHub) - coming soon
 
-## Learn More
+## 🌐 Internationalization
 
-To learn more about Next.js, take a look at the following resources:
+Supports multiple languages:
+- English
+- Lao
+- Thai
+- Japanese
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📱 Responsive Design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Fully responsive design works seamlessly on:
+- Desktop
+- Tablet
+- Mobile devices
 
-## Deploy on Vercel
+## 🛠️ Customization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Theme
+- Light Mode
+- Dark Mode
+- Custom color themes via Tailwind CSS
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Language
+Switch languages easily using the language selector
+
+## 🔧 Configuration
+
+- `next.config.ts`: Next.js configuration
+- `tailwind.config.ts`: Tailwind CSS customization
+- `tsconfig.json`: TypeScript configuration
+
+## 📦 Dependencies
+
+Key dependencies:
+- Next.js
+- React
+- Tailwind CSS
+- Zustand
+- Recharts
+- Axios
+- Prisma
+
+## 🧪 Testing
+
+### Running Tests
+```bash
+npm run test
+# or
+yarn test
+```
+
+## 🚢 Deployment
+
+Easily deployable on:
+- Vercel
+- Netlify
+- Heroku
+- DigitalOcean
+
+## 📝 TODO
+- [ ] Add more investment tracking features
+- [ ] Implement budget alerts
+- [ ] Create advanced reporting
+- [ ] Add more payment method integrations
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 📧 Contact
+
+Your Name - [pitidev.lao@gmail.com](mailto:pitidev.lao@gmail.com)
+
+Project Link: [https://github.com/PitiDev/Personal-Finance-Tracker](https://github.com/PitiDev/Personal-Finance-Tracker)
+
+---
+
+**Built with ❤️ by Xtech Solutions** (Piti Phanthasombath)

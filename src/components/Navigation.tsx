@@ -161,7 +161,7 @@ export function Footer({ lang }: NavbarProps) {
             </h3>
             <div className="mt-4 space-y-4">
               <a
-                href="https://github.com/yourusername/yourrepo"
+                href="https://github.com/PitiDev/Personal-Finance-Tracker"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white block"
