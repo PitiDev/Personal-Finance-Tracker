@@ -169,3 +169,6 @@ Project Link: [https://github.com/PitiDev/Personal-Finance-Tracker](https://gith
 ---
 
 **Built with ❤️ by Xtech Solutions** (Piti Phanthasombath)
+
+🍺 Support me by buying me a beer
+[Buy me a beer](https://buymeacoffee.com/pitidev)
