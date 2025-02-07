@@ -43,7 +43,7 @@ export default function ChangePasswordModal({ isOpen, onClose, onSuccess }: Chan
         setError(null);
 
         try {
-            const response = await fetch('http://localhost:4000/api/users/change-password', {
+            const response = await fetch('https://api.sabaimoney.com/api/users/change-password', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

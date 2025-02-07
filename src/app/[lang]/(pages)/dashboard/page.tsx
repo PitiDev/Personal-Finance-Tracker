@@ -83,7 +83,7 @@ const useDashboardData = (token: string) => {
     useEffect(() => {
         const fetchDashboardData = async () => {
             try {
-                const response = await fetch('http://localhost:4000/api/dashboard/report', {
+                const response = await fetch('https://api.sabaimoney.com/api/dashboard/report', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }

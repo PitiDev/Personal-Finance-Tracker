@@ -2,13 +2,13 @@
 import { Navbar, Footer } from '@/components/Navigation';
 import { getDictionary } from '../../../../../get-dictionary'
 import { Locale } from '../../../i18n-config'
-import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { useRouter, useParams } from 'next/navigation'
 
 import {
     Code,
     BookOpen,
     Globe,
-    User,
     Server,
     Database,
     Braces,
@@ -19,34 +19,41 @@ import {
     Mail,
     Facebook,
     Github,
-    Youtube,
-    Link
+    Youtube
 } from 'lucide-react'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { useAuthStore } from '@/store/authStore';
 
-export default function AboutPage({ lang }: { lang: Locale }) {
+// Add Props interface
+interface AboutPageProps {
+    params: {
+        lang: Locale
+    }
+}
 
-    const router = useRouter()
-    const [dictionary, setDictionary] = useState<any>()
+// Update the component definition
+export default function AboutPage() {
+    const router = useRouter();
+    const { user, token, logout } = useAuthStore();
+    const params = useParams();
+    const lang = params.lang as Locale;
+    const [dictionary, setDictionary] = useState<any>({})
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        const fetchDictionary = async () => {
+        const initializePage = async () => {
             try {
-                setIsLoading(true)
-                const fetchedDictionary = await getDictionary(lang)
-                setDictionary(fetchedDictionary)
+                const dict = await getDictionary(lang);
+                setDictionary(dict);
+
+                
             } catch (error) {
-                console.error('Failed to fetch dictionary:', error)
-            } finally {
-                setIsLoading(false)
+                console.error('Page initialization failed:', error);
             }
-        }
+        };
 
-        fetchDictionary()
-    }, [lang])
-
+        initializePage();
+    }, [lang, router]);
 
 
     const technologies = [
@@ -184,11 +191,11 @@ export default function AboutPage({ lang }: { lang: Locale }) {
                                     Developed By
                                 </h2>
                                 <div className="flex flex-col items-center">
-                                    <div className="mb-4">
+                                    {/* <div className="mb-4">
                                         <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white-500 shadow-lg mx-auto">
                                             <img src="https://avatars.githubusercontent.com/u/25051846?v=4" alt="Piti Phanthasombath" className="w-full h-full object-cover" />
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                                         Mr. Piti Phanthasombath
                                     </h3>
@@ -248,13 +255,26 @@ export default function AboutPage({ lang }: { lang: Locale }) {
                                     Buy me a beer
                                 </h2>
                                 <a className="mt-4 block mx-auto" href="https://www.buymeacoffee.com/pitidev" target="_blank">
-                                    <img className="mx-auto" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width={217} height={60} />
+                                    <Image
+                                        src="/your-image.jpg"
+                                        alt="Buy Me A Coffee"
+                                        width={217}
+                                        height={60}
+                                        priority={true}
+                                    />
                                 </a>
                                 <br />
                                 <p className="text-gray-600 dark:text-gray-300">or</p>
                                 <br />
                                 <p className="text-gray-600 dark:text-gray-300">LAOQR PAYMENT</p>
-                                <img className="mx-auto rounded-lg" src="https://iblaos.com/exchange/pro/piti_qr.jpg" alt="Buy Me A Coffee" width={300} height={60} />
+                                <Image
+                                    src="/your-image.jpg"
+                                    alt="Buy Me A Coffee"
+                                    width={300}
+                                    height={60}
+                                    className="mx-auto rounded-lg"
+                                    priority={true}
+                                />
                             </div>
                         </div>
                     </div>

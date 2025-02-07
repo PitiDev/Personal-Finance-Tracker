@@ -50,10 +50,10 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
     const fetchData = async () => {
       try {
         const [accountsResponse, categoriesResponse] = await Promise.all([
-          axios.get('http://localhost:4000/api/accounts', {
+          axios.get('https://api.sabaimoney.com/api/accounts', {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          axios.get('http://localhost:4000/api/categories', {
+          axios.get('https://api.sabaimoney.com/api/categories', {
             headers: { Authorization: `Bearer ${token}` }
           })
         ])
@@ -82,7 +82,7 @@ const TransactionForm = ({ onSuccess, onCancel, dictionary }: TransactionFormPro
       }
 
       const response = await axios.post(
-        'http://localhost:4000/api/transactions',
+        'https://api.sabaimoney.com/api/transactions',
         {
           account_id: parseInt(formData.account_id),
           category_id: parseInt(formData.category_id),

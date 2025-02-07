@@ -67,7 +67,7 @@ export default function LoanPage() {
             }
 
             // Fetch loans
-            const response = await fetch('http://localhost:4000/api/loans', {
+            const response = await fetch('https://api.sabaimoney.com/api/loans', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

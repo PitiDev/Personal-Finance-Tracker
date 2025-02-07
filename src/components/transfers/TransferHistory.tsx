@@ -26,7 +26,7 @@ interface TransferHistoryProps {
     dictionary: any
 }
 
-const API_URL = 'http://localhost:4000/api/transfers/history'
+const API_URL = 'https://api.sabaimoney.com/api/transfers/history'
 
 export default function TransferHistory({ dictionary }: TransferHistoryProps) {
     const { token } = useAuthStore()

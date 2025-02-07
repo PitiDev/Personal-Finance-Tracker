@@ -42,7 +42,7 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
     useEffect(() => {
         const fetchAccounts = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/accounts', {
+                const response = await axios.get('https://api.sabaimoney.com/api/accounts', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 })
                 setAccounts(response.data.data)
@@ -60,7 +60,7 @@ const TransferForm: React.FC<TransferFormProps> = ({ dictionary }) => {
     const onSubmit = async (data: TransferData) => {
         setIsLoading(true)
         try {
-            await axios.post('http://localhost:4000/api/transfers', data, {
+            await axios.post('https://api.sabaimoney.com/api/transfers', data, {
                 headers: { 'Authorization': `Bearer ${token}` }
             })
             toast.success(dictionary.transferSuccessMessage)

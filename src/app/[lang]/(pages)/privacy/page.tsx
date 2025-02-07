@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { Footer, Navbar } from '@/components/Navigation'
-import { getDictionary } from '../../../../../get-dictionary'
 import { Locale } from '../../../i18n-config'
 import { Shield, Eye, Lock, HardDrive, Share2, Bell, UserCheck, Mail } from 'lucide-react';
+import { useParams } from 'next/navigation';
 
 interface Section {
     id: string;
@@ -184,9 +184,11 @@ const TableOfContents = ({ activeSection, onSectionClick }: {
     );
 };
 
-export default function PrivacyPage({ lang }: { lang: Locale }) {
+export default function PrivacyPage() {
     const [activeSection, setActiveSection] = useState(sections[0].id);
-
+    const params = useParams();
+    const lang = params.lang as Locale;
+    
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {

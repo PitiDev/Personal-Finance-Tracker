@@ -9,7 +9,6 @@ import { toast } from 'sonner'
 import Swal from 'sweetalert2'
 
 import {
-    Loader2,
     LayoutDashboard,
     LogOut,
     Wallet,
@@ -23,6 +22,8 @@ import {
 import { getDictionary } from '../../../../../get-dictionary'
 import { Locale } from '../../../i18n-config'
 import { DeleteAccountModal } from '@/components/ui/ModalDeleteAccount'
+import { User } from '@/types'
+import { Dictionary } from '@/types/dictionary'
 
 interface Account {
     account_id: number;
@@ -53,7 +54,7 @@ const useAccountData = (token: string) => {
 
     const fetchAccounts = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/accounts', {
+            const response = await fetch('https://api.sabaimoney.com/api/accounts', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -76,7 +77,7 @@ const useAccountData = (token: string) => {
         if (token) {
             fetchAccounts();
         }
-    }, [token]);
+    }, [token, fetchAccounts]);
 
     return { data, error, isLoading, refetch: fetchAccounts };
 };
@@ -104,7 +105,7 @@ const formatCurrency = (amount: string | null, currency: string) => {
 
 function AccountCard({ account, dictionary, onDelete }: {
     account: Account;
-    dictionary: any;
+    dictionary: Dictionary;
     onDelete: (id: number) => void
 }) {
     const getAccountIcon = () => {
@@ -234,7 +235,7 @@ export default function AccountsPage() {
 
     const handleAddAccount = async (accountData: NewAccount) => {
         try {
-            const response = await fetch('http://localhost:4000/api/accounts', {
+            const response = await fetch('https://api.sabaimoney.com/api/accounts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -265,7 +266,7 @@ export default function AccountsPage() {
 
         setIsDeleting(true);
         try {
-            const response = await fetch(`http://localhost:4000/api/accounts/${accountToDelete.account_id}`, {
+            const response = await fetch(`https://api.sabaimoney.com/api/accounts/${accountToDelete.account_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -354,12 +355,6 @@ export default function AccountsPage() {
     const totalBalance = accounts?.reduce((sum, account) => {
         return sum + parseFloat(account.balance);
     }, 0);
-
-    const handleDeleteAccount = (id: number) => {
-        // Implement the delete logic here
-        console.log(`Deleting account with id: ${id}`);
-    };
-
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">

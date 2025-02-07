@@ -59,7 +59,7 @@ const TransactionsPage = () => {
     const fetchTransactions = useCallback(async (page: number) => {
         setIsLoading(true)
         try {
-            const response = await axios.get('http://localhost:4000/api/transactions', {
+            const response = await axios.get('https://api.sabaimoney.com/api/transactions', {
                 headers: { Authorization: `Bearer ${token}` },
                 params: { page, limit: 10 },
             })

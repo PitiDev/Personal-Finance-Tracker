@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer, Navbar } from '@/components/Navigation'
 import { getDictionary } from '../../../../../get-dictionary'
 import { Locale } from '../../../i18n-config'
@@ -17,6 +17,9 @@ import {
     Bell,
     Fingerprint
 } from 'lucide-react';
+import { useRouter } from 'next/router';
+import { useAuthStore } from '@/store/authStore';
+import { useParams } from 'next/navigation';
 
 interface SecurityFeature {
     id: string;
@@ -208,7 +211,36 @@ const IncidentReportForm = () => {
     );
 };
 
-export default function SecurityPage({ lang }: { lang: Locale }) {
+export default function SecurityPage() {
+
+    const router = useRouter();
+    const { user, token, logout } = useAuthStore();
+    const params = useParams();
+    const lang = params.lang as Locale;
+    const [dictionary, setDictionary] = useState<any>({})
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        const initializePage = async () => {
+            try {
+                const dict = await getDictionary(lang);
+                setDictionary(dict);
+
+                await new Promise(resolve => setTimeout(resolve, 100));
+                const { user, token } = useAuthStore.getState();
+                if (!user || !token) {
+                    router.push(`/${lang}/login`);
+                } else {
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                console.error('Page initialization failed:', error);
+            }
+        };
+
+        initializePage();
+    }, [lang, router]);
+
     return (
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
             <Navbar lang={lang} />

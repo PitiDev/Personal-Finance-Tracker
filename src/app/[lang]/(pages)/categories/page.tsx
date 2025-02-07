@@ -40,7 +40,7 @@ const useCategoryData = (token: string) => {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/categories', {
+            const response = await fetch('https://api.sabaimoney.com/api/categories', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -81,7 +81,7 @@ const useCategoryData = (token: string) => {
         type: 'income' | 'expense'
     }) => {
         try {
-            const response = await fetch('http://localhost:4000/api/categories', {
+            const response = await fetch('https://api.sabaimoney.com/api/categories', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -108,7 +108,7 @@ const useCategoryData = (token: string) => {
         type: 'income' | 'expense'
     }) => {
         try {
-            const response = await fetch(`http://localhost:4000/api/categories/${id}`, {
+            const response = await fetch(`https://api.sabaimoney.com/api/categories/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -131,7 +131,7 @@ const useCategoryData = (token: string) => {
 
     const deleteCategory = async (id: number) => {
         try {
-            const response = await fetch(`http://localhost:4000/api/categories/${id}`, {
+            const response = await fetch(`https://api.sabaimoney.com/api/categories/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,

@@ -62,7 +62,7 @@ export default function ProfilePage() {
                     return;
                 }
 
-                const response = await fetch('http://localhost:4000/api/users/profile', {
+                const response = await fetch('https://api.sabaimoney.com/api/users/profile', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -89,7 +89,7 @@ export default function ProfilePage() {
     const handleCurrencyChange = async (newCurrency: string) => {
         try {
             setIsUpdating(true);
-            const response = await fetch('http://localhost:4000/api/users/profile', {
+            const response = await fetch('https://api.sabaimoney.com/api/users/profile', {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,

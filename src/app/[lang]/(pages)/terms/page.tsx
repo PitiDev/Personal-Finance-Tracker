@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer, Navbar } from '@/components/Navigation'
 import { getDictionary } from '../../../../../get-dictionary'
 import { Locale } from '../../../i18n-config'
@@ -14,6 +14,9 @@ import {
     AlertTriangle,
     HelpCircle
 } from 'lucide-react';
+import { useAuthStore } from '@/store/authStore';
+import { useRouter } from 'next/router';
+import { useParams } from 'next/navigation';
 
 interface Section {
     id: string;
@@ -210,7 +213,35 @@ const TableOfContents = ({ activeSection, onSectionClick }: {
     );
 };
 
-export default function TermsPage({ lang }: { lang: Locale }) {
+export default function TermsPage() {
+    const router = useRouter();
+    const { user, token, logout } = useAuthStore();
+    const params = useParams();
+    const lang = params.lang as Locale;
+    const [dictionary, setDictionary] = useState<any>({})
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        const initializePage = async () => {
+            try {
+                const dict = await getDictionary(lang);
+                setDictionary(dict);
+
+                await new Promise(resolve => setTimeout(resolve, 100));
+                const { user, token } = useAuthStore.getState();
+                if (!user || !token) {
+                    router.push(`/${lang}/login`);
+                } else {
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                console.error('Page initialization failed:', error);
+            }
+        };
+
+        initializePage();
+    }, [lang, router]);
+    
     const [activeSection, setActiveSection] = useState(sections[0].id);
 
     const scrollToSection = (id: string) => {

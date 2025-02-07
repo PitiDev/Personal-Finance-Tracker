@@ -77,11 +77,7 @@ const menuItems = [
         icon: Users,
         href: "/users"
     },
-    {
-        key: "about",
-        icon: Info,
-        href: "/about"
-    },
+
 ]
 
 export default function Sidebar({ onToggle }: SidebarProps) {

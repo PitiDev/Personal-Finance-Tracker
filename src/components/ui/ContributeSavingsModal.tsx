@@ -34,7 +34,7 @@ const ContributeSavingsModal = ({
         setError('');
 
         try {
-            const response = await fetch(`http://localhost:4000/api/savings-goals/${goalId}/contribute`, {
+            const response = await fetch(`https://api.sabaimoney.com/api/savings-goals/${goalId}/contribute`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

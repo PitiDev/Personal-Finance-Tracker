@@ -71,7 +71,7 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
         setError(null);
 
         try {
-            const response = await fetch(`http://localhost:4000/api/savings-goals/${goal.goal_id}`, {
+            const response = await fetch(`https://api.sabaimoney.com/api/savings-goals/${goal.goal_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -96,8 +96,8 @@ export default function SavingsModal({ isOpen, onClose, onSuccess, goal, mode }:
         setError(null);
 
         const url = mode === 'create'
-            ? 'http://localhost:4000/api/savings-goals'
-            : `http://localhost:4000/api/savings-goals/${goal?.goal_id}`;
+            ? 'https://api.sabaimoney.com/api/savings-goals'
+            : `https://api.sabaimoney.com/api/savings-goals/${goal?.goal_id}`;
 
         try {
             const response = await fetch(url, {

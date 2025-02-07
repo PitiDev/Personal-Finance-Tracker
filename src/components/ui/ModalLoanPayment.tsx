@@ -51,7 +51,7 @@ export default function LoanPaymentForm({ onSuccess }: PaymentFormProps) {
             setIsSubmitting(true);
             setError('');
 
-            const response = await fetch(`http://localhost:4000/api/loans/${params.id}/payments`, {
+            const response = await fetch(`https://api.sabaimoney.com/api/loans/${params.id}/payments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

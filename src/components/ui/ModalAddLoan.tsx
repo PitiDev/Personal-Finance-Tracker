@@ -52,7 +52,7 @@ const AddLoanModal = ({
         setError('');
 
         try {
-            const response = await fetch('http://localhost:4000/api/loans', {
+            const response = await fetch('https://api.sabaimoney.com/api/loans', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const AddLoanModal = ({
     useEffect(() => {
         const fetchAccounts = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/accounts', {
+                const response = await axios.get('https://api.sabaimoney.com/api/accounts', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 })
                 setAccounts(response.data.data)

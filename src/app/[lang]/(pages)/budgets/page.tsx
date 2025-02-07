@@ -212,10 +212,10 @@ export default function BudgetsPage() {
     const fetchData = async () => {
         try {
             const [budgetsResponse, categoriesResponse] = await Promise.all([
-                fetch('http://localhost:4000/api/budgets', {
+                fetch('https://api.sabaimoney.com/api/budgets', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 }),
-                fetch('http://localhost:4000/api/categories', {
+                fetch('https://api.sabaimoney.com/api/categories', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 })
             ]);
@@ -259,8 +259,8 @@ export default function BudgetsPage() {
         try {
             const response = await fetch(
                 selectedBudget
-                    ? `http://localhost:4000/api/budgets/${selectedBudget.budget_id}`
-                    : 'http://localhost:4000/api/budgets',
+                    ? `https://api.sabaimoney.com/api/budgets/${selectedBudget.budget_id}`
+                    : 'https://api.sabaimoney.com/api/budgets',
                 {
                     method: selectedBudget ? 'PUT' : 'POST',
                     headers: {
@@ -289,7 +289,7 @@ export default function BudgetsPage() {
         }
 
         try {
-            const response = await fetch(`http://localhost:4000/api/budgets/${budgetId}`, {
+            const response = await fetch(`https://api.sabaimoney.com/api/budgets/${budgetId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
