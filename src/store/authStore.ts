@@ -75,26 +75,21 @@ const createAuthStore = (set: any) => ({
         password: string
     ): Promise<{ status: string; message: string }> => {
         try {
-            const response = await apiClient.post<ApiResponse<RegisterResponse>>('/users/register', {
-                username,
-                email,
-                main_currency,
-                password
-            })
-
+            const response = await apiClient.post('/users/register', { username, email, main_currency, password })
             const { status, message, data } = response.data
-
-            if (status === 'success' && data) {
-                set({ user: data.user, token: data.accessToken })
-                return { status, message: message || 'Registration successful' }
+            if (status === 'success') {
+                // Assuming the API also returns user data and token on successful registration
+                // If not, you might need to perform a login action after registration
+                if (data && data.user && data.accessToken) {
+                    set({ user: data.user, token: data.accessToken })
+                }
+                return { status, message }
+            } else {
+                throw new Error(message || 'Registration failed')
             }
-
-            throw new Error(message || 'Registration failed: Invalid response from server')
         } catch (error) {
-            if (error instanceof Error) {
-                throw new Error(`Registration failed: ${error.message}`)
-            }
-            throw new Error('Registration failed: An unexpected error occurred')
+            console.error('Registration error:', error)
+            throw error
         }
     },
 

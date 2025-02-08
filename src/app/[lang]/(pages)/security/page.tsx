@@ -17,9 +17,11 @@ import {
     Bell,
     Fingerprint
 } from 'lucide-react';
-import { useRouter } from 'next/router';
+
 import { useAuthStore } from '@/store/authStore';
 import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
 
 interface SecurityFeature {
     id: string;
@@ -226,13 +228,6 @@ export default function SecurityPage() {
                 const dict = await getDictionary(lang);
                 setDictionary(dict);
 
-                await new Promise(resolve => setTimeout(resolve, 100));
-                const { user, token } = useAuthStore.getState();
-                if (!user || !token) {
-                    router.push(`/${lang}/login`);
-                } else {
-                    setIsLoading(false);
-                }
             } catch (error) {
                 console.error('Page initialization failed:', error);
             }

@@ -163,7 +163,7 @@ const SpendingPieChart = ({ data }: { data: any[] }) => {
                             cx="50%"
                             cy="50%"
                             innerRadius={70}
-                            outerRadius={130}
+                            outerRadius={120}
                             fill="#8884d8"
                             paddingAngle={5}
                             dataKey="value"

@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import { useParams, usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
+
 import {
     Users,
     FolderTree,
@@ -166,14 +168,23 @@ export default function Sidebar({ onToggle }: SidebarProps) {
                 <div className={cn("flex flex-col h-full w-64")}>
                     {/* Header */}
                     <div className="p-4">
-                        <div className="flex items-center justify-between mb-8">
+                        <div className="flex items-center justify-between">
                             <h1 className={cn(
                                 "text-xl font-bold whitespace-nowrap",
                                 "transition-opacity duration-300 ease-in-out",
                                 !isOpen && "opacity-0 group-hover:opacity-100",
                                 "text-gray-900 dark:text-white"
                             )}>
-                                {dictionary.sidebar.title}
+                                {/* {dictionary.sidebar.title} */}
+                                <div className="relative w-32 h-32 sm:w-40">
+                                    <Image
+                                        src={theme === 'dark' ? '/logo_sabaimoney.png' : '/logo_sabaimoney_dark.png'}
+                                        alt="Personal Finance Logo"
+                                        fill
+                                        className="object-contain animate-pulse"
+                                        priority
+                                    />
+                                </div>
                             </h1>
                             {/* Theme Toggle and Close Button Container */}
                             <div className="flex items-center gap-2">

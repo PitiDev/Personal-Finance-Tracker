@@ -7,6 +7,7 @@ import { ThemeToggle } from '../components/layout/ThemeToggle'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import { getDictionary } from '../../get-dictionary'
 import { i18n, Locale } from '../../i18n-config'
+import Image from 'next/image'
 import {
   LogIn,
   UserPlus,
@@ -22,6 +23,7 @@ import {
 
 } from 'lucide-react'
 import { Footer, Navbar } from '@/components/Navigation'
+import { useTheme } from 'next-themes'
 
 interface Dictionary {
   appTitle: string
@@ -31,6 +33,7 @@ interface Dictionary {
 }
 
 export default function Home({ lang }: { lang: Locale }) {
+  const { theme, setTheme } = useTheme()
   const router = useRouter()
   const [dictionary, setDictionary] = useState<Dictionary>({
     appTitle: '',
@@ -88,7 +91,15 @@ export default function Home({ lang }: { lang: Locale }) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
         <div className="relative">
-          <Calculator className="h-16 w-16 text-blue-500 animate-pulse" />
+          <div className="relative w-32 h-32 sm:w-40">
+            <Image
+              src={theme === 'dark' ? '/logo_sabaimoney.png' : '/logo_sabaimoney_dark.png'}
+              alt="Personal Finance Logo"
+              fill
+              className="object-contain animate-pulse"
+              priority
+            />
+          </div>
           <BarChart3 className="h-8 w-8 text-green-500 absolute -right-4 -bottom-2 animate-bounce" />
         </div>
       </div>
@@ -136,10 +147,15 @@ export default function Home({ lang }: { lang: Locale }) {
         <div className="relative z-10 flex items-center justify-center min-h-[calc(20vh-4rem)] px-4 py-16">
           <div className="text-center max-w-2xl">
             <div className="glass-content rounded-2xl p-8">
-              <div className="flex justify-center mb-6">
-                <div className="relative">
-                  <Wallet className="h-16 w-16 text-blue-500" />
-                  <PiggyBank className="h-8 w-8 text-green-500 absolute -right-4 -bottom-2 animate-bounce" />
+              <div className="flex justify-center mb-0">
+                <div className="relative w-32 h-32 sm:w-40">
+                  <Image
+                    src={theme === 'dark' ? '/logo_sabaimoney.png' : '/logo_sabaimoney_dark.png'}
+                    alt="Personal Finance Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
               </div>
 
@@ -225,11 +241,13 @@ export default function Home({ lang }: { lang: Locale }) {
                     <div className="absolute top-1 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full"></div>
                   </div>
                 </div>
+                <h1 className='text-center pt-3 text-xl mb-8 text-gray-600 dark:text-gray-300'>Mobile App Coming Soon</h1>
 
                 {/* Floating Elements */}
                 <div className="absolute -top-8 -left-8 w-16 h-16 bg-blue-500 rounded-full blur-xl opacity-60 animate-pulse"></div>
                 <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-purple-500 rounded-full blur-xl opacity-60 animate-pulse delay-300"></div>
               </div>
+
 
               {/* App Features */}
               <div className="lg:w-1/2 space-y-8">

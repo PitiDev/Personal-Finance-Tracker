@@ -49,7 +49,7 @@ export default function RegisterForm({ dictionary, lang }: { dictionary: Diction
             }, 2000)
         } catch (error) {
             console.error('Registration failed:', error)
-            setError(dictionary.registrationFailed)
+            setError(error.response.data.message)
         } finally {
             setIsLoading(false)
         }

@@ -15,8 +15,7 @@ import {
     HelpCircle
 } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
-import { useRouter } from 'next/router';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 interface Section {
     id: string;
@@ -227,13 +226,7 @@ export default function TermsPage() {
                 const dict = await getDictionary(lang);
                 setDictionary(dict);
 
-                await new Promise(resolve => setTimeout(resolve, 100));
-                const { user, token } = useAuthStore.getState();
-                if (!user || !token) {
-                    router.push(`/${lang}/login`);
-                } else {
-                    setIsLoading(false);
-                }
+                
             } catch (error) {
                 console.error('Page initialization failed:', error);
             }

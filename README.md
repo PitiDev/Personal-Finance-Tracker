@@ -1,5 +1,5 @@
 # Personal Finance Tracker 💰📊
-
+![Logo SabaiMoney](screenshots/logo_sabaimoney.png)
 ## Overview
 Personal Finance Tracker is a modern, full-stack web application built with Next.js that helps users manage their finances, track expenses, set budgets, and gain insights into their financial health.
 

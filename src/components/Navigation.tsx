@@ -5,6 +5,9 @@ import LanguageSwitcher from './LanguageSwitcher'
 import { Wallet, Menu, X } from 'lucide-react'
 import { getDictionary } from '../../get-dictionary'
 import { i18n, Locale } from '../../i18n-config'
+import Image from 'next/image'
+import { useTheme } from 'next-themes'
+
 
 interface NavbarProps {
   lang: Locale;
@@ -20,6 +23,9 @@ export function Navbar({ lang }: NavbarProps) {
     { name: 'About Us', href: `/${lang}/about` },
   ]
 
+  const { theme } = useTheme()
+
+
   return (
     <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,10 +33,18 @@ export function Navbar({ lang }: NavbarProps) {
           {/* Logo and Brand */}
           <div className="flex items-center">
             <Link href={`/${lang}`} className="flex items-center">
-              <Wallet className="h-8 w-8 text-blue-500" />
-              <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">
-                FinanceTracker
-              </span>
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48">
+                <Image
+                  src={theme === 'dark' ? '/logo_sabaimoney.png' : '/logo_sabaimoney_dark.png'}
+                  alt="Personal Finance Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              {/* <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">
+                Sabai Money <br /><p className='text-sm'>FinanceTracker</p>
+              </span> */}
             </Link>
           </div>
 
@@ -72,9 +86,8 @@ export function Navbar({ lang }: NavbarProps) {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-        } overflow-hidden`}
+        className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+          } overflow-hidden`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navigation.map((item) => (
